@@ -26,8 +26,9 @@ window.ONDERZOEK = {
 
   // De metingen van dit jaar. status: "afgerond", "open" of "gepland".
   metingen: [
-    { naam: "Meting 1", periode: "voorjaar", thema: "Accountmanagement en buitendienst", status: "afgerond" },
-    { naam: "Meting 2", periode: "zomer", thema: "Binnendienst en acceptatie", status: "afgerond" },
+    // samenvattingUrl is optioneel: link naar de samenvatting van die meting.
+    { naam: "Meting 1", periode: "voorjaar", thema: "Accountmanagement en buitendienst", status: "afgerond", samenvattingUrl: "https://www.dfobv.nl/wp-content/uploads/2026/10/Samenvatting-Performance-onderzoek-Kwaliteit-accountmanagement-en-buitendienst-2026-itleyn.pdf" },
+    { naam: "Meting 2", periode: "zomer", thema: "Binnendienst en acceptatie", status: "afgerond", samenvattingUrl: "samenvattingen/2026-meting-2.pdf" },
     { naam: "Meting 3", periode: "najaar", thema: "Processen en digitale ondersteuning", status: "open" }
   ],
   metingenIntro: "Drie metingen in 2026, per productmarkt een eigen rapport.",
@@ -111,6 +112,64 @@ window.ONDERZOEK = {
     aanvraagUrl: "mailto:info@dfobv.nl?subject=Aanvraag%20rapport%20Performance-onderzoek%202026",
     contact: { naam: "Bureau DFO", telefoon: "033 – 258 04 60", email: "info@dfobv.nl" }
   },
+
+  // Teasers: grafieken uit het onderzoek. Alleen cijfers per markt, nooit per aanbieder.
+  // soort "paar": twee punten per rij (a en b). soort "staven": één waarde per rij.
+  inzichten: [
+    {
+      kop: "Je keuze van aanbieder maakt veel verschil",
+      uitleg: "Score van de best en de laagst beoordeelde aanbieder per markt, gewogen naar wat adviseurs belangrijk vinden. Schaal 1 tot 10.",
+      bron: "Meting 2, 2026: binnendienst en acceptatie",
+      soort: "paar",
+      domein: [5, 9], ticks: [5, 6, 7, 8, 9], decimalen: 1,
+      reeksA: { naam: "Laagst beoordeeld", kleur: "#C2601A", open: false },
+      reeksB: { naam: "Best beoordeeld", kleur: "#005EA9", open: false },
+      verschil: true,
+      rijen: [
+        { label: "Particulier Schade", a: 5.26, b: 8.8 },
+        { label: "Lijfrente", a: 6.9, b: 8.97 },
+        { label: "Hypotheken", a: 6.39, b: 8.35 },
+        { label: "ORV", a: 6.68, b: 7.79 },
+        { label: "Zakelijk Schade", a: 7.12, b: 8.11 }
+      ]
+    },
+    {
+      kop: "Adviseurs bevelen hypotheek- en lijfrenteaanbieders vaker aan",
+      uitleg: "Gemiddelde aanbevelingsscore (NPS) van de aanbieders per markt. Hoe hoger, hoe vaker adviseurs ze aanbevelen aan collega's.",
+      bron: "Performance-onderzoek 2024 en 2025",
+      soort: "paar",
+      domein: [0, 70], ticks: [0, 20, 40, 60], decimalen: 0,
+      reeksA: { naam: "2024", kleur: "#4F95CF", open: true },
+      reeksB: { naam: "2025", kleur: "#005EA9", open: false },
+      verschil: false,
+      rijen: [
+        { label: "Hypotheken", a: 47, b: 60 },
+        { label: "Lijfrente", a: 29, b: 44 },
+        { label: "ORV", a: null, b: 44 },
+        { label: "Zakelijk Schade", a: 38, b: 38 },
+        { label: "AOV", a: 33, b: 35 },
+        { label: "Particulier Schade", a: 40, b: 32 }
+      ],
+      noot: "ORV is in 2025 voor het eerst gemeten."
+    },
+    {
+      kop: "Een bereikbare, vaste contactpersoon weegt het zwaarst",
+      uitleg: "Hoe belangrijk adviseurs elk aspect van de buitendienst vinden, gemiddeld over zes markten. Schaal 1 tot 10.",
+      bron: "Meting 1, 2026: accountmanagement en buitendienst",
+      soort: "staven",
+      domein: [0, 10], ticks: [0, 2, 4, 6, 8, 10], decimalen: 1,
+      kleur: "#005EA9",
+      rijen: [
+        { label: "Bereikbaarheid", waarde: 8.28 },
+        { label: "Vaste contactpersoon", waarde: 8.25 },
+        { label: "Proactief meedenken", waarde: 7.98 },
+        { label: "Kwaliteit trainingen", waarde: 7.9 },
+        { label: "Kwaliteit evenementen", waarde: 7.9 },
+        { label: "Deskundigheid", waarde: 7.75 },
+        { label: "Oog voor strategie", waarde: 7.33 }
+      ]
+    }
+  ],
 
   // Eerdere resultaten. Nieuwste bovenaan.
   // Bron: de samenvattingen voor adviseurs (2024, 2025, 2026 meting 1 en 2) en de persberichten.
