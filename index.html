@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Performance-onderzoek | DFO Onderzoek</title>
+  <meta name="description" content="Doe mee aan het Performance-onderzoek van DFO Onderzoek. Beoordeel geldverstrekkers en verzekeraars in 10 minuten en ontvang als eerste de vakpaper.">
+  <meta property="og:title" content="Performance-onderzoek | DFO Onderzoek">
+  <meta property="og:description" content="Jouw oordeel bepaalt de winnaars. Beoordeel aanbieders in 10 minuten en ontvang als eerste de vakpaper.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/logo.png">
+  <meta name="theme-color" content="#005EA9">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="demo-bar" id="demo-bar" hidden>
+    Voorbeeldversie: cijfers, winnaars en citaten op deze pagina zijn fictief.
+  </div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#top" class="logo" aria-label="DFO Onderzoek, naar boven">
+        <img src="assets/logo.png" alt="DFO Onderzoek" width="160" height="56">
+      </a>
+      <nav class="main-nav" aria-label="Hoofdmenu">
+        <a href="#opbrengst">Wat levert het op</a>
+        <a href="#status">Stand van zaken</a>
+        <a href="#resultaten">Eerdere resultaten</a>
+        <a href="#vragen">Vragen</a>
+      </nav>
+      <a class="btn btn-small js-cta" href="#">Doe mee</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 1. Hero -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow"><span id="hero-naam"></span> <span id="hero-editie"></span></p>
+          <h1>Jouw oordeel bepaalt de winnaars</h1>
+          <p class="lead" id="hero-ondertitel"></p>
+          <ul class="facts">
+            <li><span class="fact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span><span id="fact-duur"></span></li>
+            <li><span class="fact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>
+            </span><span id="fact-sluit"></span></li>
+            <li><span class="fact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+            </span>Anoniem verwerkt</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn-light js-cta" href="#">Start de vragenlijst</a>
+            <a class="link-light" href="#resultaten">Bekijk eerdere resultaten</a>
+          </div>
+        </div>
+
+        <aside class="status-card" aria-labelledby="status-card-title">
+          <p class="status-card-label" id="status-card-title">Stand van zaken</p>
+          <p class="status-big"><span id="totaal-pct">0</span>%</p>
+          <p class="status-sub">van de beoordelingen die we nodig hebben</p>
+          <div class="bar bar-lg" role="progressbar" aria-label="Voortgang totaal" aria-valuemin="0" aria-valuemax="100" id="totaal-bar">
+            <span></span>
+          </div>
+          <div class="status-split">
+            <div><strong id="dagen-over"></strong><span id="dagen-label">dagen nog open</span></div>
+            <div><strong id="groepen-hulp"></strong><span>productgroepen hebben jou nog nodig</span></div>
+          </div>
+          <a class="status-link" href="#status">Bekijk per productgroep</a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 2. Wat levert meedoen op -->
+    <section class="section" id="opbrengst">
+      <div class="wrap">
+        <p class="kicker">Wat levert meedoen op</p>
+        <h2>10 minuten van jou, een jaar lang betere service</h2>
+        <div class="card-grid" id="opbrengst-lijst"></div>
+      </div>
+    </section>
+
+    <!-- 3. Stand van zaken per productgroep -->
+    <section class="section section-tint" id="status">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Stand van zaken</p>
+            <h2>Hier hebben we jou nog nodig</h2>
+            <p class="section-intro">Per productgroep hebben we een minimum aantal beoordelingen nodig om betrouwbare uitspraken te doen. Werk je met aanbieders in een groep die nog achterloopt? Dan telt jouw stem dubbel.</p>
+          </div>
+          <p class="updated" id="bijgewerkt"></p>
+        </div>
+        <div class="group-grid" id="groepen"></div>
+        <div class="center"><a class="btn js-cta" href="#">Start de vragenlijst</a></div>
+      </div>
+    </section>
+
+    <!-- 4. Hoe werkt het -->
+    <section class="section" id="werkwijze">
+      <div class="wrap">
+        <p class="kicker">Hoe werkt het</p>
+        <h2>Van jouw oordeel naar de winnaars</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-nr">1</span>
+            <h3>Je beoordeelt de aanbieders</h3>
+            <p>Alleen de aanbieders waar je zelf mee werkt, op onder meer acceptatie, snelheid, bereikbaarheid en producten.</p>
+          </li>
+          <li>
+            <span class="step-nr">2</span>
+            <h3>Wij analyseren onafhankelijk</h3>
+            <p>DFO Onderzoek verwerkt alle beoordelingen anoniem en berekent de scores per productgroep.</p>
+          </li>
+          <li>
+            <span class="step-nr">3</span>
+            <h3>Jij ontvangt als eerste de vakpaper</h3>
+            <p>In <span class="js-resultaten"></span> maken we de winnaars bekend. Deelnemers krijgen de volledige vakpaper vooraf.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 5. Eerdere resultaten -->
+    <section class="section section-dark" id="resultaten">
+      <div class="wrap">
+        <p class="kicker kicker-light">Eerdere resultaten</p>
+        <h2>Zo oordeelden adviseurs eerder</h2>
+        <div class="tabs" role="tablist" aria-label="Kies een jaar" id="jaar-tabs"></div>
+        <div id="jaar-panel" role="tabpanel" class="year-panel"></div>
+      </div>
+    </section>
+
+    <!-- 6. Impact -->
+    <section class="section" id="impact">
+      <div class="wrap impact-grid">
+        <figure class="quote">
+          <blockquote id="impact-citaat"></blockquote>
+          <figcaption id="impact-bron"></figcaption>
+        </figure>
+        <div>
+          <p class="kicker">Wat er met de uitkomsten gebeurt</p>
+          <h2>Jouw oordeel komt aan</h2>
+          <ul class="impact-list" id="impact-punten"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Vragen -->
+    <section class="section section-tint" id="vragen">
+      <div class="wrap narrow">
+        <p class="kicker">Veelgestelde vragen</p>
+        <h2>Goed om te weten</h2>
+        <div class="faq" id="faq"></div>
+      </div>
+    </section>
+
+    <!-- 8. Afsluiter -->
+    <section class="final-cta">
+      <div class="wrap final-inner">
+        <div>
+          <h2>Doe mee voor <span id="final-sluit"></span></h2>
+          <p>Het kost je ongeveer <span class="js-duur"></span> minuten. Jouw ervaring helpt het hele vak vooruit.</p>
+        </div>
+        <a class="btn btn-light js-cta" href="#">Start de vragenlijst</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p><strong>DFO Onderzoek</strong> is onderdeel van Bureau DFO B.V.</p>
+      <p>De Wel 14-16, 3871 MV Hoevelaken &middot; <a href="tel:+31332580460">033 – 258 04 60</a> &middot; <a href="mailto:info@dfobv.nl">info@dfobv.nl</a> &middot; <a href="https://www2.dfobv.nl">www2.dfobv.nl</a></p>
+      <p class="footer-small">KvK 32068727 &middot; <a href="#privacy-link-volgt">Privacyverklaring</a></p>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" id="sticky-cta">
+    <a class="btn js-cta" href="#">Doe mee, <span class="js-duur"></span> minuten</a>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
