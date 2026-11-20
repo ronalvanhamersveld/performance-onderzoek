@@ -48,9 +48,9 @@ window.ONDERZOEK = {
   // Laat url leeg ("") om het blok te verbergen.
   voorbereiding: {
     url: "#voorbereiding-link-volgt",
-    besparing: "5 minuten",
-    kop: "Bespaar 5 minuten per meting",
-    tekst: "Vul één keer je kantoorgegevens in, zoals de grootte van je kantoor, je regio en de productmarkten waarin je adviseert. Bij elke volgende meting hoef je die niet opnieuw in te vullen en beoordeel je direct de aanbieders.",
+    besparing: "1½ minuut",
+    kop: "Eén keer je kantoorgegevens, daarna sneller door elke meting",
+    tekst: "Vul één keer je kantoorgegevens in, zoals de grootte van je kantoor, je regio en de productmarkten waarin je adviseert. Bij elke volgende meting slaan we die vragen over en beoordeel je direct de aanbieders. Dat scheelt ongeveer 1½ minuut per meting, ook als je meedoet aan het Serviceproviders-onderzoek.",
     stappen: [
       "Vul eenmalig je kantoorgegevens in",
       "Je krijgt bij elke meting een persoonlijke link",
@@ -261,7 +261,7 @@ window.ONDERZOEK = {
     { vraag: "Waarom drie metingen per jaar?", antwoord: "Vanaf 2026 doen we het Performance-onderzoek in drie metingen, elk met een eigen thema: in het voorjaar accountmanagement en buitendienst, in de zomer binnendienst en acceptatie, in het najaar processen en digitale ondersteuning. Zo gaat elke vragenlijst over één thema en zijn de uitkomsten actueler." },
     { vraag: "Hoe lang duurt het invullen?", antwoord: "Ongeveer 10 minuten. Je beoordeelt alleen de aanbieders waar je zelf mee werkt, dus je slaat over wat niet voor jou geldt." },
     { vraag: "Zijn mijn antwoorden anoniem?", antwoord: "Ja. We rapporteren alleen op groepsniveau. Je antwoorden zijn nooit terug te leiden naar jou of je kantoor." },
-    { vraag: "Wat is de voorbereidingslink?", antwoord: "Met de voorbereidingslink vul je één keer je kantoorgegevens in. Bij de volgende metingen hoef je die niet opnieuw in te vullen. Dat scheelt je ongeveer 5 minuten per meting." },
+    { vraag: "Wat is de voorbereidingslink?", antwoord: "Met de voorbereidingslink vul je één keer je kantoorgegevens in. Bij de volgende metingen hoef je die niet opnieuw in te vullen. Dat scheelt ongeveer 1½ minuut per meting, ook bij het Serviceproviders-onderzoek." },
     { vraag: "Hoe krijg ik de samenvatting?", antwoord: "Aan het eind van de vragenlijst laat je je e-mailadres achter. Dat gebruiken we alleen om je de samenvatting te sturen en we slaan het los van je antwoorden op." },
     { vraag: "Wat doen de aanbieders met mijn oordeel?", antwoord: "De aanbieders zien hoe adviseurs hun dienstverlening beoordelen en op welke punten het beter kan. Zo helpt jouw oordeel de partijen waarmee je samenwerkt om hun service te verbeteren." },
     { vraag: "Wie voert het onderzoek uit?", antwoord: "DFO Onderzoek, onderdeel van Bureau DFO in Hoevelaken, in samenwerking met Atentikmarketing." }
