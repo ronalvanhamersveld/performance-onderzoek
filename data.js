@@ -15,7 +15,7 @@ window.ONDERZOEK = {
   naam: "Performance-onderzoek",
   editie: "2026 · meting 3",
   ondertitel:
-    "Hoe presteren geldverstrekkers en verzekeraars in de praktijk? Jij werkt er dagelijks mee, dus niemand weet het beter.",
+    "Drie keer per jaar beoordelen financieel adviseurs hoe geldverstrekkers en verzekeraars presteren. Adviseurs weten daarna hoe de partijen ervoor staan. Aanbieders zien waar ze kunnen verbeteren.",
 
   // Link naar de vragenlijst van de huidige meting.
   vragenlijstUrl: "#vragenlijst-link-volgt",
@@ -43,25 +43,55 @@ window.ONDERZOEK = {
     { naam: "Arbeidsongeschiktheid (AOV)", doel: 100, huidig: 48 }
   ],
 
-  // Wat deelnemers krijgen.
+  // Kerncijfers bovenaan de pagina (voor beide doelgroepen).
+  kerncijfers: [
+    { waarde: "2.200+", label: "beoordelingen in meting 1" },
+    { waarde: "6", label: "productmarkten" },
+    { waarde: "3", label: "metingen per jaar" }
+  ],
+
+  // ADVISEURS: wat deelnemers eraan hebben.
   opbrengst: [
     {
-      titel: "De vakpaper direct in je mailbox",
-      tekst: "Deelnemers krijgen de vakpaper met de uitkomsten per productmarkt automatisch toegestuurd zodra hij verschijnt."
+      titel: "Weet hoe de aanbieders ervoor staan",
+      tekst: "Je ontvangt de vakpaper met de scores per productmarkt. Zo zie je welke geldverstrekkers en verzekeraars het best presteren voor adviseurs."
     },
     {
-      titel: "Jouw stem bepaalt de winnaars",
-      tekst: "De beste aanbieders per productmarkt volgen rechtstreeks uit de beoordelingen van financieel adviseurs."
+      titel: "Jouw stem bepaalt de uitkomst",
+      tekst: "De scores en de beste aanbieders per markt volgen rechtstreeks uit de beoordelingen van financieel adviseurs."
     },
     {
-      titel: "Aanbieders gaan ermee aan de slag",
-      tekst: "Geldverstrekkers en verzekeraars gebruiken de uitkomsten om hun service aan adviseurs te verbeteren. Jouw ervaring telt dus echt."
+      titel: "Betere service van aanbieders",
+      tekst: "Aanbieders krijgen hun eigen uitkomsten en zien precies waar adviseurs verbetering verwachten."
     },
     {
-      titel: "Snel, anoniem en zonder verplichtingen",
-      tekst: "Invullen kost ongeveer 10 minuten. Je antwoorden worden anoniem verwerkt en nooit herleidbaar gedeeld."
+      titel: "10 minuten en anoniem",
+      tekst: "Je beoordeelt alleen de aanbieders waar je mee werkt. Je antwoorden zijn nooit naar jou of je kantoor te herleiden."
     }
   ],
+
+  // AANBIEDERS: wat het rapport oplevert en hoe ze het aanvragen.
+  aanbieders: {
+    kop: "Weet hoe adviseurs uw dienstverlening beoordelen",
+    intro: "Het Performance-onderzoek laat per productmarkt zien hoe financieel adviseurs uw organisatie beoordelen en hoe u scoort ten opzichte van de markt. Per meting ontvangt u een eigen rapport.",
+    voordelen: [
+      { titel: "Eigen rapport per productmarkt", tekst: "Uw scores op de kwaliteitsaspecten van elke meting, naast het gemiddelde van de markt." },
+      { titel: "Uw NPS bij het intermediair", tekst: "Hoe waarschijnlijk het is dat adviseurs u aanbevelen, en hoe dat zich over de metingen ontwikkelt." },
+      { titel: "Wat adviseurs belangrijk vinden", tekst: "Per aspect het belang en de waardering, zodat u ziet waar verbeteren het meeste oplevert." },
+      { titel: "Zichtbaar bij adviseurs", tekst: "Uw naam bij de gratis vakpaper die naar de deelnemende adviseurs gaat." }
+    ],
+    bewijs: {
+      cijfer: "Meting 1, 2026",
+      tekst: "Aanbieders met een hoog gewaardeerde buitendienst hebben een hogere NPS en een groter omzetaandeel bij adviseurs."
+    },
+    pakketten: [
+      { naam: "Rapport per meting", tekst: "Het rapport van één meting voor de productmarkten waarin u actief bent.", prijs: "Prijs op aanvraag", aanbevolen: false },
+      { naam: "Compleet pakket 2026", tekst: "De rapporten van meting 1, 2 en 3. Het rapport van meting 3 ontvangt u zodra het verschijnt.", prijs: "Prijs op aanvraag", aanbevolen: true }
+    ],
+    // Waar de knop "Vraag het rapport aan" naartoe gaat (een formulier of e-mail).
+    aanvraagUrl: "mailto:info@dfobv.nl?subject=Aanvraag%20rapport%20Performance-onderzoek%202026",
+    contact: { naam: "Bureau DFO", telefoon: "033 – 258 04 60", email: "info@dfobv.nl" }
+  },
 
   // Eerdere resultaten. Nieuwste bovenaan. Bron: persberichten en winnaarspagina's van Bureau DFO.
   // top3 is optioneel: vul die alleen in als de 2e en 3e plaats bekend zijn.
@@ -143,6 +173,14 @@ window.ONDERZOEK = {
       { titel: "Winnaars in beeld", tekst: "De beste aanbieders per productmarkt worden bekendgemaakt en gaan aan de slag met hun uitkomsten.", link: "https://www2.dfobv.nl/winnaars-performance-onderzoek-2025/" }
     ]
   },
+
+  faqAanbieders: [
+    { vraag: "Welke productmarkten worden onderzocht?", antwoord: "Hypotheken, Particulier Schade, Zakelijk Schade, Lijfrente, ORV en AOV. Per productmarkt ontvangt u een eigen rapport." },
+    { vraag: "Wat staat er in het rapport?", antwoord: "Per meting uw scores op de kwaliteitsaspecten van het thema, het belang dat adviseurs aan elk aspect hechten, uw NPS en de vergelijking met het marktgemiddelde." },
+    { vraag: "Kan ik nog instappen voor 2026?", antwoord: "Ja. Het complete pakket 2026 bevat de rapporten van meting 1 en 2, en het rapport van meting 3 zodra het verschijnt." },
+    { vraag: "Heeft het afnemen van een rapport invloed op de uitkomst?", antwoord: "Nee. De scores komen alleen uit de beoordelingen van financieel adviseurs. Of u een rapport afneemt, heeft daar geen invloed op." },
+    { vraag: "Kunnen wij zien welke adviseur wat heeft geantwoord?", antwoord: "Nee. Alle uitkomsten worden op groepsniveau gerapporteerd. Antwoorden zijn niet te herleiden naar adviseurs of kantoren." }
+  ],
 
   faq: [
     { vraag: "Wie kan meedoen?", antwoord: "Iedere financieel adviseur die zaken doet met een of meer aanbieders in de productmarkten Hypotheken, Particulier Schade, Zakelijk Schade, Lijfrente, ORV of AOV." },

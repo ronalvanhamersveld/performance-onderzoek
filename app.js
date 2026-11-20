@@ -20,101 +20,136 @@
   }
   function getal(n) { return Number(n).toLocaleString("nl-NL"); }
   function setText(sel, txt) { $$(sel).forEach(function (el) { el.textContent = txt; }); }
+  function setHtml(sel, html) { var el = $(sel); if (el) el.innerHTML = html; }
+  function linkAttrs(url) {
+    return /^https?:/.test(url) ? ' target="_blank" rel="noopener"' : "";
+  }
 
   // Voorbeeldbalk
   if (d.voorbeeld) {
     $("#demo-bar").hidden = false;
-    if (d.voorbeeldTekst) $("#demo-bar").textContent = d.voorbeeldTekst;
+    $("#demo-bar").textContent = d.voorbeeldTekst || "Voorbeeldversie";
   }
-
-  // Metingen van dit jaar
-  var metingen = d.metingen || [];
-  var open = metingen.filter(function (m) { return m.status === "open"; })[0];
-  var STATUS = { afgerond: "Afgerond", open: "Nu open", gepland: "Gepland" };
-  if (metingen.length && $("#metingen")) {
-    setText("#metingen-intro", d.metingenIntro || "");
-    $("#metingen").innerHTML = metingen.map(function (m, i) {
-      return '<li class="meting meting-' + esc(m.status) + '">' +
-        '<span class="meting-nr" aria-hidden="true">' + (i + 1) + "</span>" +
-        '<div class="meting-body"><p class="meting-naam">' + esc(m.naam) + (m.periode ? ", " + esc(m.periode) : "") + "</p>" +
-        '<p class="meting-thema">' + esc(m.thema) + "</p></div>" +
-        '<span class="pill pill-' + esc(m.status) + '">' + (STATUS[m.status] || esc(m.status)) + "</span></li>";
-    }).join("");
-  } else if ($("#metingen-sectie")) {
-    $("#metingen-sectie").hidden = true;
-  }
-  if (open) setText("#fact-thema", "Thema: " + open.thema);
-  else if ($("#fact-thema-li")) $("#fact-thema-li").hidden = true;
 
   // Deadline
   var vandaag = new Date(); vandaag.setHours(0, 0, 0, 0);
   var sluit = new Date(d.sluitdatum + "T23:59:59");
-  var dagen = Math.ceil((sluit - vandaag) / 86400000) - 1;
+  var dagen = Math.max(0, Math.ceil((sluit - vandaag) / 86400000) - 1);
   var gesloten = sluit < new Date();
 
-  // Knoppen naar de vragenlijst
+  // Metingen
+  var metingen = d.metingen || [];
+  var open = metingen.filter(function (m) { return m.status === "open"; })[0];
+  var STATUS = { afgerond: "Afgerond", open: "Nu open", gepland: "Gepland" };
+  if (open) setText(".js-meting-naam", open.naam.toLowerCase());
+
+  // Knoppen naar de vragenlijst (adviseurs)
   $$(".js-cta").forEach(function (a) {
     if (gesloten) {
       a.href = "#resultaten";
-      if (/vragenlijst|Doe mee/.test(a.textContent)) a.textContent = "Bekijk de resultaten";
+      a.textContent = "Bekijk de resultaten";
     } else {
       a.href = d.vragenlijstUrl;
       if (/^https?:/.test(d.vragenlijstUrl)) { a.target = "_blank"; a.rel = "noopener"; }
     }
   });
 
+  // Knoppen voor aanbieders
+  var ab = d.aanbieders || {};
+  $$(".js-aanvraag").forEach(function (a) {
+    // De knoppen in de kop en de hero scrollen naar het aanbiedersdeel; de andere gaan direct naar de aanvraag.
+    if (a.getAttribute("href") === "#aanbieders") return;
+    if (ab.aanvraagUrl) a.href = ab.aanvraagUrl;
+  });
+
   // Hero
   setText("#hero-naam", d.naam);
   setText("#hero-editie", d.editie);
   setText("#hero-ondertitel", d.ondertitel);
-  setText("#fact-duur", "Ongeveer " + d.duurMinuten + " minuten");
+  setText("#fact-duur", "Ongeveer " + d.duurMinuten + " minuten, anoniem");
   setText(".js-duur", d.duurMinuten);
-  setText("#fact-sluit", gesloten ? "Inschrijving gesloten" : "Open tot " + datum(d.sluitdatum));
+  setText("#fact-sluit", gesloten ? "Deze meting is gesloten" : "Open tot " + datum(d.sluitdatum));
   setText("#final-sluit", datum(d.sluitdatum));
-  setText(".js-resultaten", d.resultatenBekend);
+  if (open) setText("#fact-thema", "Thema: " + open.thema);
+  else $("#fact-thema-li").hidden = true;
+  setText("#dagen-tekst", gesloten ? "Gesloten" : dagen === 1 ? "nog 1 dag" : "nog " + dagen + " dagen");
 
-  // Totaalstand
-  var totDoel = 0, totHuidig = 0, hulpNodig = 0;
+  // Kerncijfers
+  setHtml("#kerncijfers", (d.kerncijfers || []).map(function (k) {
+    return '<div class="figure"><strong>' + esc(k.waarde) + "</strong><span>" + esc(k.label) + "</span></div>";
+  }).join(""));
+
+  // Metingen
+  if (metingen.length) {
+    setText("#metingen-intro", d.metingenIntro || "");
+    setHtml("#metingen", metingen.map(function (m, i) {
+      return '<li class="meting meting-' + esc(m.status) + '">' +
+        '<span class="meting-nr" aria-hidden="true">' + (i + 1) + "</span>" +
+        '<div class="meting-body"><p class="meting-naam">' + esc(m.naam) + (m.periode ? ", " + esc(m.periode) : "") + "</p>" +
+        '<p class="meting-thema">' + esc(m.thema) + "</p></div>" +
+        '<span class="pill pill-' + esc(m.status) + '">' + (STATUS[m.status] || esc(m.status)) + "</span></li>";
+    }).join(""));
+  } else {
+    $("#metingen-sectie").hidden = true;
+  }
+
+  // Stand van zaken
+  var totDoel = 0, totHuidig = 0;
   d.productgroepen.forEach(function (g) {
     totDoel += g.doel;
     totHuidig += Math.min(g.huidig, g.doel);
-    if (g.huidig < g.doel) hulpNodig++;
   });
   var totPct = totDoel ? Math.round((totHuidig / totDoel) * 100) : 0;
-  setText("#dagen-over", gesloten ? "0" : Math.max(dagen, 0));
-  if (dagen === 1) setText("#dagen-label", "dag nog open");
-  setText("#groepen-hulp", hulpNodig);
   setText("#bijgewerkt", "Bijgewerkt op " + datum(d.laatstBijgewerkt));
-  var totBar = $("#totaal-bar");
-  totBar.setAttribute("aria-valuenow", totPct);
+  $("#totaal-bar").setAttribute("aria-valuenow", totPct);
 
-  // Productgroepen, de groepen met de grootste achterstand eerst
   var groepen = d.productgroepen.slice().sort(function (a, b) { return a.huidig / a.doel - b.huidig / b.doel; });
-  $("#groepen").innerHTML = groepen.map(function (g) {
+  setHtml("#groepen", groepen.map(function (g) {
     var pct = Math.min(100, Math.round((g.huidig / g.doel) * 100));
     var nodig = Math.max(0, g.doel - g.huidig);
     var laag = pct < LAAG * 100, vol = nodig === 0;
     return '<article class="group' + (laag ? " prio" : "") + '">' +
-      '<div class="group-top"><h3>' + esc(g.naam) + '</h3><span class="group-pct">' + pct + '%</span></div>' +
+      '<div class="group-top"><h4>' + esc(g.naam) + '</h4><span class="group-pct">' + pct + "%</span></div>" +
       '<div class="bar' + (laag ? " laag" : vol ? " vol" : "") + '" role="progressbar" aria-label="' + esc(g.naam) + '" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" data-pct="' + pct + '"><span></span></div>' +
       '<div class="group-meta"><span>' + (vol ? "Doel gehaald" : "Nog " + getal(nodig) + " beoordelingen nodig") + "</span>" +
       (laag ? '<span class="badge">Hier missen we jou</span>' : vol ? '<span class="badge ok">Gehaald</span>' : "") +
       "</div></article>";
-  }).join("");
+  }).join(""));
 
-  // Opbrengst
+  // Opbrengst voor adviseurs
   var iconen = [
-    '<path d="M4 5h16v14H4z"/><path d="M4 7l8 6 8-6"/>',
+    '<path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/>',
     '<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
     '<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>',
     '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'
   ];
-  $("#opbrengst-lijst").innerHTML = d.opbrengst.map(function (o, i) {
+  setHtml("#opbrengst-lijst", d.opbrengst.map(function (o, i) {
     return '<div class="card"><div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24">' + iconen[i % iconen.length] + "</svg></div>" +
       "<h3>" + esc(o.titel) + "</h3><p>" + esc(o.tekst) + "</p></div>";
-  }).join("");
+  }).join(""));
 
-  // Eerdere resultaten met jaartabs
+  // Aanbieders
+  setText("#aanbieders-kop", ab.kop || "");
+  setText("#aanbieders-intro", ab.intro || "");
+  if (ab.bewijs) {
+    setText("#bewijs-label", ab.bewijs.cijfer);
+    setText("#bewijs-tekst", ab.bewijs.tekst);
+    setText(".js-bewijs-label", ab.bewijs.cijfer.toLowerCase());
+    setText(".js-bewijs-tekst", ab.bewijs.tekst);
+  }
+  setHtml("#aanbieders-voordelen", (ab.voordelen || []).map(function (v) {
+    return "<li><strong>" + esc(v.titel) + "</strong><span>" + esc(v.tekst) + "</span></li>";
+  }).join(""));
+  setHtml("#pakketten", (ab.pakketten || []).map(function (p) {
+    return '<div class="package' + (p.aanbevolen ? " package-best" : "") + '">' +
+      (p.aanbevolen ? '<span class="package-tag">Meest gekozen</span>' : "") +
+      "<h3>" + esc(p.naam) + "</h3><p>" + esc(p.tekst) + '</p><p class="package-price">' + esc(p.prijs) + "</p></div>";
+  }).join(""));
+  if (ab.contact) {
+    setText("#aanbieders-contact", "Liever eerst overleggen? Bel " + ab.contact.naam + " op " + ab.contact.telefoon + " of mail naar " + ab.contact.email + ".");
+  }
+
+  // Eerdere resultaten met tabs
   var tabs = $("#jaar-tabs"), panel = $("#jaar-panel");
   function toonJaar(i) {
     var j = d.vorigeJaren[i];
@@ -132,7 +167,7 @@
         }).join("") + "</div>" : "") +
         '<p class="finding"><span class="finding-label">Opvallendste uitkomst</span>' + esc(j.kernbevinding) + "</p>" +
         (links.length ? '<ul class="year-links">' + links.map(function (l) {
-          return '<li><a class="year-link" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.tekst) + "</a></li>";
+          return '<li><a class="year-link" href="' + esc(l.url) + '"' + linkAttrs(l.url) + ">" + esc(l.tekst) + "</a></li>";
         }).join("") + "</ul>" : "") +
       "</div>" +
       '<div class="winners"><h3>' + esc(j.winnaarsTitel || "Winnaars " + j.jaar) + "</h3>" +
@@ -161,27 +196,23 @@
   // Impact
   setText("#impact-citaat", d.impact.citaat);
   setText("#impact-bron", d.impact.bron);
-  $("#impact-punten").innerHTML = d.impact.punten.map(function (p) {
-    var titel = p.link ? '<a href="' + esc(p.link) + '" target="_blank" rel="noopener">' + esc(p.titel) + "</a>" : esc(p.titel);
+  setHtml("#impact-punten", d.impact.punten.map(function (p) {
+    var titel = p.link ? '<a href="' + esc(p.link) + '"' + linkAttrs(p.link) + ">" + esc(p.titel) + "</a>" : esc(p.titel);
     return "<li><strong>" + titel + "</strong><p>" + esc(p.tekst) + "</p></li>";
-  }).join("");
+  }).join(""));
 
   // FAQ
-  $("#faq").innerHTML = d.faq.map(function (f) {
-    return "<details><summary>" + esc(f.vraag) + "</summary><p>" + esc(f.antwoord) + "</p></details>";
-  }).join("");
-
-  // Balken laten vollopen zodra ze in beeld komen
-  function vul(bar) { bar.querySelector("span").style.width = (bar.getAttribute("data-pct") || totPct) + "%"; }
-  var bars = $$(".bar");
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (items) {
-      items.forEach(function (it) { if (it.isIntersecting) { vul(it.target); io.unobserve(it.target); } });
-    }, { threshold: 0.3 });
-    bars.forEach(function (b) { io.observe(b); });
-  } else {
-    bars.forEach(vul);
+  function faqHtml(lijst) {
+    return (lijst || []).map(function (f) {
+      return "<details><summary>" + esc(f.vraag) + "</summary><p>" + esc(f.antwoord) + "</p></details>";
+    }).join("");
   }
+  setHtml("#faq", faqHtml(d.faq));
+  setHtml("#faq-aanbieders", faqHtml(d.faqAanbieders));
+
+  // Balken vullen (direct zichtbaar, met een korte animatie)
+  function vul(bar) { bar.querySelector("span").style.width = (bar.getAttribute("data-pct") || totPct) + "%"; }
+  requestAnimationFrame(function () { $$(".bar").forEach(vul); });
 
   // Tellen van het totaalpercentage
   var el = $("#totaal-pct"), start = null;
