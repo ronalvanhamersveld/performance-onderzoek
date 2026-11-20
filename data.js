@@ -15,11 +15,11 @@ window.ONDERZOEK = {
   naam: "Performance-onderzoek",
   editie: "2026 · meting 3",
   ondertitel:
-    "Beoordeel in 10 minuten de geldverstrekkers en verzekeraars waar je mee werkt. Je ontvangt een samenvatting van de belangrijkste uitkomsten en helpt de partijen waarmee je samenwerkt hun dienstverlening te verbeteren.",
+    "Beoordeel in 8 minuten de geldverstrekkers en verzekeraars waar je mee werkt. Je ontvangt een samenvatting van de belangrijkste uitkomsten en helpt de partijen waarmee je samenwerkt hun dienstverlening te verbeteren.",
 
   // Link naar de vragenlijst van de huidige meting.
   vragenlijstUrl: "#vragenlijst-link-volgt",
-  duurMinuten: 10,
+  duurMinuten: 8,
   sluitdatum: "2026-12-19",
   resultatenBekend: "begin 2027",
   laatstBijgewerkt: "2026-11-20",
@@ -81,7 +81,7 @@ window.ONDERZOEK = {
       tekst: "De scores en de best beoordeelde aanbieders per markt volgen rechtstreeks uit de beoordelingen van financieel adviseurs."
     },
     {
-      titel: "10 minuten en anoniem",
+      titel: "8 minuten en anoniem",
       tekst: "Je beoordeelt alleen de aanbieders waar je mee werkt. Je antwoorden zijn nooit naar jou of je kantoor te herleiden."
     }
   ],
@@ -259,7 +259,7 @@ window.ONDERZOEK = {
   faq: [
     { vraag: "Wie kan meedoen?", antwoord: "Iedere financieel adviseur die zaken doet met een of meer aanbieders in de productmarkten Hypotheken, Particulier Schade, Zakelijk Schade, Lijfrente, ORV of AOV." },
     { vraag: "Waarom drie metingen per jaar?", antwoord: "Vanaf 2026 doen we het Performance-onderzoek in drie metingen, elk met een eigen thema: in het voorjaar accountmanagement en buitendienst, in de zomer binnendienst en acceptatie, in het najaar processen en digitale ondersteuning. Zo gaat elke vragenlijst over één thema en zijn de uitkomsten actueler." },
-    { vraag: "Hoe lang duurt het invullen?", antwoord: "Ongeveer 10 minuten. Je beoordeelt alleen de aanbieders waar je zelf mee werkt, dus je slaat over wat niet voor jou geldt." },
+    { vraag: "Hoe lang duurt het invullen?", antwoord: "Ongeveer 8 minuten. In meting 2 was de helft van de adviseurs binnen 8 minuten klaar. Je beoordeelt alleen de aanbieders waar je zelf mee werkt, dus je slaat over wat niet voor jou geldt." },
     { vraag: "Zijn mijn antwoorden anoniem?", antwoord: "Ja. We rapporteren alleen op groepsniveau. Je antwoorden zijn nooit terug te leiden naar jou of je kantoor." },
     { vraag: "Wat is de voorbereidingslink?", antwoord: "Met de voorbereidingslink vul je één keer je kantoorgegevens in. Bij de volgende metingen hoef je die niet opnieuw in te vullen. Dat scheelt ongeveer 1½ minuut per meting, ook bij het Serviceproviders-onderzoek." },
     { vraag: "Hoe krijg ik de samenvatting?", antwoord: "Aan het eind van de vragenlijst laat je je e-mailadres achter. Dat gebruiken we alleen om je de samenvatting te sturen en we slaan het los van je antwoorden op." },
