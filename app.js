@@ -169,6 +169,7 @@
         (links.length ? '<ul class="year-links">' + links.map(function (l) {
           return '<li><a class="year-link" href="' + esc(l.url) + '"' + linkAttrs(l.url) + ">" + esc(l.tekst) + "</a></li>";
         }).join("") + "</ul>" : "") +
+        (j.noot ? '<p class="year-note">' + esc(j.noot) + "</p>" : "") +
       "</div>" +
       '<div class="winners"><h3>' + esc(j.winnaarsTitel || "Winnaars " + j.jaar) + "</h3>" +
         j.winnaars.map(function (w) {

@@ -45,7 +45,7 @@ window.ONDERZOEK = {
 
   // Kerncijfers bovenaan de pagina (voor beide doelgroepen).
   kerncijfers: [
-    { waarde: "2.200+", label: "beoordelingen in meting 1" },
+    { waarde: "3.300+", label: "beoordelingen in 2026 tot nu toe" },
     { waarde: "6", label: "productmarkten" },
     { waarde: "3", label: "metingen per jaar" }
   ],
@@ -96,28 +96,49 @@ window.ONDERZOEK = {
     contact: { naam: "Bureau DFO", telefoon: "033 – 258 04 60", email: "info@dfobv.nl" }
   },
 
-  // Eerdere resultaten. Nieuwste bovenaan. Bron: persberichten en winnaarspagina's van Bureau DFO.
-  // top3 is optioneel: vul die alleen in als de 2e en 3e plaats bekend zijn.
+  // Eerdere resultaten. Nieuwste bovenaan.
+  // Bron: de samenvattingen voor adviseurs (2024, 2025, 2026 meting 1 en 2) en de persberichten.
+  // top3 is optioneel: de 2e en 3e plaats. Laat weg als die niet bekend is.
+  // noot is optioneel: een korte zin onder de links.
   vorigeJaren: [
+    {
+      jaar: "2026 · meting 2",
+      kerncijfers: [
+        { waarde: "1.300+", label: "beoordelingen door adviseurs" },
+        { waarde: "5", label: "productmarkten" }
+      ],
+      kernbevinding:
+        "Of adviseurs een aanbieder aanbevelen, hangt vooral af van partnerschap: een binnendienst die echt meedenkt. Bereikbaarheid, snelle mailafhandeling en overleg zijn de basis. Binnen één markt kan het verschil tussen de beste en zwakste aanbieder oplopen tot ruim drie punten.",
+      links: [],
+      noot: "Als deelnemer ontvang je de samenvatting met alle uitkomsten per productmarkt.",
+      winnaarsTitel: "Top 3 binnendienst en acceptatie",
+      winnaars: [
+        { productgroep: "Hypotheken", winnaar: "Obvion", top3: ["Lloyds Bank", "ING"] },
+        { productgroep: "Particulier Schade", winnaar: "Nh1816 Verzekeringen", top3: ["De Goudse Verzekeringen", "Turien & Co."] },
+        { productgroep: "Zakelijk Schade", winnaar: "De Goudse Verzekeringen", top3: ["Nationale-Nederlanden", "Klaverblad"] },
+        { productgroep: "Lijfrente", winnaar: "OAKK", top3: ["NNEK", "Scildon"] },
+        { productgroep: "ORV", winnaar: "TAF", top3: ["Scildon", "Dazure"] }
+      ]
+    },
     {
       jaar: "2026 · meting 1",
       kerncijfers: [
-        { waarde: "2.200+", label: "beoordelingen door adviseurs" },
+        { waarde: "2.027", label: "beoordelingen door adviseurs" },
         { waarde: "6", label: "productmarkten" }
       ],
       kernbevinding:
-        "Een hoog gewaardeerde buitendienst leidt tot een hogere NPS en een groter omzetaandeel. Adviseurs vinden een vast contactpersoon en goede bereikbaarheid het belangrijkst.",
+        "Adviseurs hechten in alle markten het meest aan een vast contactpersoon en een goed bereikbare accountmanager. Aanbieders met een hoog gewaardeerde buitendienst worden vaker aanbevolen.",
       links: [
-        { tekst: "Download de samenvatting", url: "https://www2.dfobv.nl/samenvattingen-onderzoek-performance-2026/" },
         { tekst: "Lees het persbericht", url: "https://www.dfobv.nl/wp-content/uploads/2026/05/Persbericht-Performance-onderzoek-aanbieders-Kwaliteit-Accountmanagement-en-Buitendienst.pdf" }
       ],
-      winnaarsTitel: "Best beoordeelde buitendienst",
+      noot: "Als deelnemer ontvang je de samenvatting met alle uitkomsten per productmarkt.",
+      winnaarsTitel: "Top 3 accountmanagement en buitendienst",
       winnaars: [
-        { productgroep: "Hypotheken", winnaar: "ING" },
-        { productgroep: "Particulier Schade", winnaar: "Nh1816 Verzekeringen" },
+        { productgroep: "Hypotheken", winnaar: "ING", top3: ["Centraal Beheer", "Obvion"] },
+        { productgroep: "Particulier Schade", winnaar: "Nh1816 Verzekeringen", top3: ["Klaverblad", "Nationale-Nederlanden"] },
         { productgroep: "Zakelijk Schade", winnaar: "Klaverblad" },
-        { productgroep: "Lijfrente", winnaar: "OAKK" },
-        { productgroep: "ORV", winnaar: "Dazure" },
+        { productgroep: "Lijfrente", winnaar: "OAKK", top3: ["NNEK", "Scildon"] },
+        { productgroep: "ORV", winnaar: "Dazure", top3: ["Allianz", "TAF"] },
         { productgroep: "AOV", winnaar: "a.s.r." }
       ]
     },
@@ -125,21 +146,21 @@ window.ONDERZOEK = {
       jaar: "2025",
       kerncijfers: [
         { waarde: "6", label: "productmarkten" },
-        { waarde: "6", label: "winnaars bekendgemaakt" }
+        { waarde: "13", label: "hypotheekaanbieders per adviseur, gemiddeld" }
       ],
       kernbevinding:
-        "Adviseurs waarderen de meeste dienstverleningsaspecten van aanbieders elk jaar iets hoger.",
+        "De deskundigheid van de binnendienst is een belangrijke factor: een adviseur wil iemand spreken die meer van het vraagstuk weet dan hij zelf. Bij hypotheken weegt de mogelijkheid tot overleg het zwaarst, bij AOV de claimafhandeling.",
       links: [
         { tekst: "Bekijk de winnaars 2025", url: "https://www2.dfobv.nl/winnaars-performance-onderzoek-2025/" }
       ],
-      winnaarsTitel: "Winnaars 2025",
+      winnaarsTitel: "Top 3 van 2025",
       winnaars: [
-        { productgroep: "Hypotheken", winnaar: "Obvion" },
-        { productgroep: "Particulier Schade", winnaar: "Nh1816" },
-        { productgroep: "Zakelijk Schade", winnaar: "Turien&Co" },
-        { productgroep: "Lijfrente", winnaar: "OAKK" },
-        { productgroep: "ORV", winnaar: "TAF" },
-        { productgroep: "AOV", winnaar: "TAF" }
+        { productgroep: "Hypotheken", winnaar: "Obvion", top3: ["ING", "Lloyds Bank"] },
+        { productgroep: "Particulier Schade", winnaar: "Nh1816 Verzekeringen", top3: ["Turien & Co.", "Klaverblad"] },
+        { productgroep: "Zakelijk Schade", winnaar: "Turien & Co.", top3: ["Nationale-Nederlanden", "a.s.r."] },
+        { productgroep: "Lijfrente", winnaar: "OAKK", top3: ["NNEK", "Brand New Day"] },
+        { productgroep: "ORV", winnaar: "TAF", top3: ["Scildon", "Nationale-Nederlanden"] },
+        { productgroep: "AOV", winnaar: "TAF", top3: ["a.s.r.", "Movir"] }
       ]
     },
     {
@@ -149,7 +170,7 @@ window.ONDERZOEK = {
         { waarde: "5", label: "productmarkten" }
       ],
       kernbevinding:
-        "Een hypotheekadviseur werkt gemiddeld met ruim 10 aanbieders. Hypotheekaanbieders halen samen een NPS van 47, aanbieders van lijfrenteproducten 29.",
+        "Bij hypotheken vinden adviseurs de mogelijkheid tot overleg het allerbelangrijkst, met goede telefonische bereikbaarheid als randvoorwaarde. Een hypotheekadviseur werkt gemiddeld met meer dan 10 aanbieders.",
       links: [
         { tekst: "Lees het persbericht", url: "https://www.dfobv.nl/wp-content/uploads/2024/09/Persbericht-winnaars-DFO-Performance-onderzoek-2024-zijn-bekend-1.pdf" },
         { tekst: "Zo schreef VVP erover", url: "https://vvponline.nl/nieuws/winnaars-dfo-performance-onderzoek-aanbieders-2024/" }
@@ -157,8 +178,8 @@ window.ONDERZOEK = {
       winnaarsTitel: "Top 3 van 2024",
       winnaars: [
         { productgroep: "Hypotheken", winnaar: "Obvion", top3: ["ING", "NIBC"] },
-        { productgroep: "Particulier Schade", winnaar: "Nh1816", top3: ["Ansvar Idéa", "Klaverblad"] },
-        { productgroep: "Zakelijk Schade", winnaar: "Nationale-Nederlanden", top3: ["De Goudse", "Klaverblad"] },
+        { productgroep: "Particulier Schade", winnaar: "Nh1816 Verzekeringen", top3: ["AnsvarIdéa", "Klaverblad"] },
+        { productgroep: "Zakelijk Schade", winnaar: "Nationale-Nederlanden", top3: ["De Goudse Verzekeringen", "Klaverblad"] },
         { productgroep: "Lijfrente", winnaar: "OAKK", top3: ["NNEK", "Fondsenplatform"] },
         { productgroep: "AOV", winnaar: "TAF", top3: ["a.s.r.", "Movir"] }
       ]
