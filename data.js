@@ -10,7 +10,7 @@
 */
 window.ONDERZOEK = {
   voorbeeld: true,
-  voorbeeldTekst: "Voorbeeldversie: de voortgang van meting 3, de sluitdatum, de link naar de vragenlijst en de voorbereidingslink zijn nog niet echt.",
+  voorbeeldTekst: "Voorbeeldversie: de sluitdatum, de link naar de vragenlijst en de voorbereidingslink zijn nog niet echt.",
 
   naam: "Performance-onderzoek",
   editie: "2026 · meting 3",
@@ -22,7 +22,6 @@ window.ONDERZOEK = {
   duurMinuten: 8,
   sluitdatum: "2026-12-19",
   resultatenBekend: "begin 2027",
-  laatstBijgewerkt: "2026-11-20",
 
   // De metingen van dit jaar. status: "afgerond", "open" of "gepland".
   metingen: [
@@ -33,16 +32,6 @@ window.ONDERZOEK = {
   ],
   metingenIntro: "Drie metingen in 2026, per productmarkt een eigen rapport.",
 
-  // Respons per productmarkt voor de huidige meting: doel = aantal beoordelingen
-  // dat we nodig hebben, huidig = aantal dat nu binnen is. Wekelijks bijwerken.
-  productgroepen: [
-    { naam: "Hypotheken", doel: 150, huidig: 112 },
-    { naam: "Particulier Schade", doel: 120, huidig: 91 },
-    { naam: "Zakelijk Schade", doel: 100, huidig: 37 },
-    { naam: "Lijfrente", doel: 80, huidig: 29 },
-    { naam: "Overlijdensrisico (ORV)", doel: 80, huidig: 52 },
-    { naam: "Arbeidsongeschiktheid (AOV)", doel: 100, huidig: 48 }
-  ],
 
   // Voorbereidingslink: adviseurs vullen één keer hun kantoorgegevens in,
   // zodat ze die niet bij elke meting opnieuw hoeven in te vullen.
@@ -296,13 +285,19 @@ window.ONDERZOEK = {
       { medium: "InFinance", datum: "2023", titel: "Winnaars Performance-onderzoek aanbieders 2023", url: "https://www.infinance.nl/artikel/winnaars-performance-onderzoek-aanbieders-2023/" },
       { medium: "VVP", datum: "2023", titel: "Winnaars Performance-onderzoek aanbieders 2023", url: "https://vvponline.nl/nieuws/winnaars-bekend-dfo-performance-onderzoek-aanbieders-2023/" }
     ],
-    // Berichten van aanbieders zelf over hun resultaat.
+    // Berichten van aanbieders zelf over hun resultaat. Nieuwste bovenaan.
+    // soort: bijvoorbeeld "Nieuwsbericht" of "LinkedIn".
     aanbiedersOver: [
-      { medium: "TAF", datum: "oktober 2026", titel: "Best gewaardeerde binnendienst in de ORV-markt", url: "https://www.taf.nl/over-taf/taf-nieuws/taf-heeft-beste-binnendienst-orv" },
-      { medium: "OAKK", datum: "mei 2026", titel: "Als beste beoordeeld op buitendienst", url: "https://oakk.nl/oakk-als-beste-beoordeeld-op-buitendienst-in-performance-onderzoek-2026/" },
-      { medium: "OAKK", datum: "oktober 2025", titel: "Beste aanbieder lijfrente 2025", url: "https://oakk.nl/beste-aanbieder-lijfrente-2025-onderzoeksresultaten-dfo-rapport/" },
-      { medium: "TAF", datum: "september 2025", titel: "Nummer 1 in DFO Performance-onderzoek 2025", url: "https://www.taf.nl/over-taf/taf-nieuws/taf-nummer-1-dfo-performance-onderzoek-2025" },
-      { medium: "TAF", datum: "2024", titel: "Ook in 2024 beste aanbieder Inkomen/AOV", url: "https://www.taf.nl/over-taf/taf-nieuws/taf-ook-2024-beste-aanbieder-inkomenaov" }
+      { medium: "TAF", datum: "oktober 2026", titel: "Best gewaardeerde binnendienst in de ORV-markt", soort: "Nieuwsbericht", url: "https://www.taf.nl/over-taf/taf-nieuws/taf-heeft-beste-binnendienst-orv" },
+      { medium: "OAKK", datum: "mei 2026", titel: "Als beste beoordeeld op buitendienst", soort: "Nieuwsbericht", url: "https://oakk.nl/oakk-als-beste-beoordeeld-op-buitendienst-in-performance-onderzoek-2026/" },
+      { medium: "OAKK", datum: "oktober 2025", titel: "Beste aanbieder lijfrente 2025", soort: "Nieuwsbericht", url: "https://oakk.nl/beste-aanbieder-lijfrente-2025-onderzoeksresultaten-dfo-rapport/" },
+      { medium: "Nh1816 Verzekeringen", datum: "september 2025", titel: "Opnieuw uitgeroepen tot beste schadeverzekeraar particulier", soort: "Nieuwsbericht", url: "https://www.nh1816.nl/nieuws/nh1816-opnieuw-uitgeroepen-tot-beste-schadeverzekeraar-particulier" },
+      { medium: "TAF", datum: "september 2025", titel: "Nummer 1 in DFO Performance-onderzoek 2025", soort: "Nieuwsbericht", url: "https://www.taf.nl/over-taf/taf-nieuws/taf-nummer-1-dfo-performance-onderzoek-2025" },
+      { medium: "Nh1816 Verzekeringen", datum: "2024", titel: "Winnaar Performance-onderzoek: in gesprek met het team", soort: "LinkedIn", url: "https://nl.linkedin.com/posts/nh1816-verzekeringen_nh1816-winnaar-performance-onderzoek-dfo-activity-7158773531839746048-Gtig" },
+      { medium: "Nh1816 Verzekeringen", datum: "2024", titel: "Uitgeroepen tot beste schadeverzekeraar particulier 2024", soort: "Nieuwsbericht", url: "https://www.nh1816.nl/nieuws/nh1816-uitgeroepen-tot-beste-schadeverzekeraar-particulier-2024" },
+      { medium: "TAF", datum: "2024", titel: "Ook in 2024 beste aanbieder Inkomen/AOV", soort: "Nieuwsbericht", url: "https://www.taf.nl/over-taf/taf-nieuws/taf-ook-2024-beste-aanbieder-inkomenaov" },
+      { medium: "Nh1816 Verzekeringen", datum: "2023", titel: "Beste particuliere schadeverzekeraar 2023", soort: "Nieuwsbericht", url: "https://www.nh1816.nl/nieuws/beste-aanbieder-particuliere-schade-2023" },
+      { medium: "Scildon", datum: "september 2022", titel: "Door adviseurs gekozen als beste verzekeraar overlijdensrisico", soort: "Nieuwsbericht", url: "https://www.scildon.nl/artikelen/scildon-door-adviseurs-gekozen-als-beste-verzekeraar-overlijdensrisico" }
     ]
   },
 

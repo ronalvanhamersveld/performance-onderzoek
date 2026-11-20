@@ -114,28 +114,6 @@
     $("#metingen-sectie").hidden = true;
   }
 
-  // Stand van zaken
-  var totDoel = 0, totHuidig = 0;
-  d.productgroepen.forEach(function (g) {
-    totDoel += g.doel;
-    totHuidig += Math.min(g.huidig, g.doel);
-  });
-  var totPct = totDoel ? Math.round((totHuidig / totDoel) * 100) : 0;
-  setText("#bijgewerkt", "Bijgewerkt op " + datum(d.laatstBijgewerkt));
-  $("#totaal-bar").setAttribute("aria-valuenow", totPct);
-
-  var groepen = d.productgroepen.slice().sort(function (a, b) { return a.huidig / a.doel - b.huidig / b.doel; });
-  setHtml("#groepen", groepen.map(function (g) {
-    var pct = Math.min(100, Math.round((g.huidig / g.doel) * 100));
-    var nodig = Math.max(0, g.doel - g.huidig);
-    var laag = pct < LAAG * 100, vol = nodig === 0;
-    return '<article class="group' + (laag ? " prio" : "") + '">' +
-      '<div class="group-top"><h4>' + esc(g.naam) + '</h4><span class="group-pct">' + pct + "%</span></div>" +
-      '<div class="bar' + (laag ? " laag" : vol ? " vol" : "") + '" role="progressbar" aria-label="' + esc(g.naam) + '" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" data-pct="' + pct + '"><span></span></div>' +
-      '<div class="group-meta"><span>' + (vol ? "Doel gehaald" : "Nog " + getal(nodig) + " beoordelingen nodig") + "</span>" +
-      (laag ? '<span class="badge">Hier missen we jou</span>' : vol ? '<span class="badge ok">Gehaald</span>' : "") +
-      "</div></article>";
-  }).join(""));
 
   // Opbrengst voor adviseurs
   var iconen = [
@@ -302,22 +280,45 @@
     var titel = p.link ? '<a href="' + esc(p.link) + '"' + linkAttrs(p.link) + ">" + esc(p.titel) + "</a>" : esc(p.titel);
     return "<li><strong>" + titel + "</strong><p>" + esc(p.tekst) + "</p></li>";
   }).join(""));
-  function persKaarten(lijst) {
-    return '<ul class="press-list">' + lijst.map(function (a) {
-      return '<li><a href="' + esc(a.url) + '"' + linkAttrs(a.url) + '><span class="press-medium">' + esc(a.medium) + '</span><span class="press-head">' + esc(a.titel) + '</span><span class="press-date">' + esc(a.datum) + "</span></a></li>";
-    }).join("") + "</ul>";
+  // Carrousels: vakpers en berichten van winnaars
+  function carrousel(titel, lijst, extraKlasse) {
+    var id = "car-" + Math.random().toString(36).slice(2, 7);
+    return '<div class="carousel' + (extraKlasse ? " " + extraKlasse : "") + '" role="region" aria-roledescription="carrousel" aria-label="' + esc(titel) + '">' +
+      '<div class="carousel-head"><h3 class="press-title">' + esc(titel) + " <span class=\"press-count\">(" + lijst.length + ")</span></h3>" +
+      '<div class="carousel-nav"><button type="button" class="car-btn" data-dir="-1" aria-controls="' + id + '" aria-label="Vorige">' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>' +
+      '<button type="button" class="car-btn" data-dir="1" aria-controls="' + id + '" aria-label="Volgende">' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>' +
+      '<ul class="carousel-track" id="' + id + '" tabindex="0">' + lijst.map(function (a) {
+        return '<li><a href="' + esc(a.url) + '"' + linkAttrs(a.url) + '><span class="press-medium">' + esc(a.medium) + "</span>" +
+          '<span class="press-head">' + esc(a.titel) + "</span>" +
+          '<span class="press-foot"><span class="press-date">' + esc(a.datum) + "</span>" +
+          (a.soort ? '<span class="press-type">' + esc(a.soort) + "</span>" : "") + "</span></a></li>";
+      }).join("") + "</ul></div>";
   }
   var pers = d.impact.vakpers || [], eigen = d.impact.aanbiedersOver || [], persHtml = "";
-  if (pers.length) {
-    persHtml += '<h3 class="press-title">In de vakpers</h3>' + persKaarten(pers.slice(0, 4));
-    if (pers.length > 4) {
-      persHtml += '<details class="press-more"><summary>Nog ' + (pers.length - 4) + " artikelen</summary>" + persKaarten(pers.slice(4)) + "</details>";
-    }
+  if (pers.length) persHtml += carrousel("In de vakpers", pers);
+  if (eigen.length) persHtml += carrousel("De winnaars delen hun resultaat", eigen, "carousel-gap");
+  if (persHtml && $("#vakpers")) {
+    setHtml("#vakpers", persHtml);
+    $$("#vakpers .carousel").forEach(function (c) {
+      var track = c.querySelector(".carousel-track"), knoppen = c.querySelectorAll(".car-btn");
+      function bijwerken() {
+        var max = track.scrollWidth - track.clientWidth - 2;
+        knoppen[0].disabled = track.scrollLeft <= 2;
+        knoppen[1].disabled = track.scrollLeft >= max;
+        c.classList.toggle("is-static", max <= 0);
+      }
+      Array.prototype.forEach.call(knoppen, function (b) {
+        b.addEventListener("click", function () {
+          track.scrollBy({ left: Number(b.getAttribute("data-dir")) * track.clientWidth * 0.9, behavior: "smooth" });
+        });
+      });
+      track.addEventListener("scroll", bijwerken, { passive: true });
+      window.addEventListener("resize", bijwerken);
+      bijwerken();
+    });
   }
-  if (eigen.length) {
-    persHtml += '<h3 class="press-title press-title-gap">De winnaars delen hun resultaat</h3>' + persKaarten(eigen);
-  }
-  if (persHtml && $("#vakpers")) setHtml("#vakpers", persHtml);
 
   // FAQ
   function faqHtml(lijst) {
@@ -327,21 +328,6 @@
   }
   setHtml("#faq", faqHtml(d.faq));
   setHtml("#faq-aanbieders", faqHtml(d.faqAanbieders));
-
-  // Balken vullen (direct zichtbaar, met een korte animatie)
-  function vul(bar) { bar.querySelector("span").style.width = (bar.getAttribute("data-pct") || totPct) + "%"; }
-  requestAnimationFrame(function () { $$(".bar").forEach(vul); });
-
-  // Tellen van het totaalpercentage
-  var el = $("#totaal-pct"), start = null;
-  function tel(t) {
-    if (!start) start = t;
-    var v = Math.min(1, (t - start) / 1200);
-    el.textContent = Math.round(totPct * (1 - Math.pow(1 - v, 3)));
-    if (v < 1) requestAnimationFrame(tel);
-  }
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) el.textContent = totPct;
-  else requestAnimationFrame(tel);
 
   // Plakknop op mobiel: tonen zodra de hero uit beeld is
   var sticky = $("#sticky-cta"), hero = $(".hero");

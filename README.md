@@ -17,11 +17,10 @@ Losse webpagina voor het Performance-onderzoek van DFO Onderzoek, bedoeld voor G
 1. Vul in `data.js` de echte gegevens in: link naar de vragenlijst, sluitdatum, doelen per productgroep, winnaars en kerncijfers van eerdere jaren, en een echt citaat (met toestemming).
 2. Zet `voorbeeld: false` in `data.js`, dan verdwijnt de gele balk.
 3. Vervang in `index.html` de link `#privacy-link-volgt` door de link naar de privacyverklaring.
-4. Laat bij "Stand van zaken" alleen percentages van het doel zien, geen aantallen respondenten per jaar die dalen. Een dalende lijn werkt averechts.
 
-## Wekelijks bijwerken
+## Bijwerken
 
-Werk in `data.js` per productgroep `huidig` bij, en zet `laatstBijgewerkt` op de datum van vandaag. Het totaalpercentage, het aantal dagen dat de vragenlijst nog open staat en de labels "Hier missen we jou" (onder 50% van het doel) worden vanzelf berekend. Na de sluitdatum veranderen de knoppen automatisch in "Bekijk de resultaten".
+Alles staat in `data.js`: de huidige meting (`metingen`, `vragenlijstUrl`, `sluitdatum`), de grafieken (`inzichten`), de eerdere resultaten met downloadlinks (`vorigeJaren`), de artikelen in de vakpers (`impact.vakpers`) en de berichten van winnaars (`impact.aanbiedersOver`). Na de sluitdatum veranderen de knoppen automatisch in "Bekijk de resultaten".
 
 ## Online zetten via GitHub Pages
 
