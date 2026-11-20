@@ -289,11 +289,12 @@ window.ONDERZOEK = {
     // toelichting is optioneel en vervangt de regel "markt · winnaar jaar".
     videos: {
       kop: "In gesprek met de winnaars",
-      tekst: "Zes gesprekken uit de Week van de Performance 2023, opgenomen in de studio van Bureau DFO. Elk ongeveer 12 minuten.",
+      tekst: "Zeven gesprekken uit de Week van de Performance 2023, opgenomen in de studio van Bureau DFO. Elk 8 tot 13 minuten.",
       knop: "Bekijk de gesprekken",
       lijst: [
         { aanbieder: "ING", markt: "Hypotheken", jaar: "2023", duur: "13:25", id: "cCGXL0cPcbQ" },
         { aanbieder: "Nh1816 Verzekeringen", markt: "Particulier Schade", jaar: "2023", duur: "12:05", id: "t5ezv-Kwbmc" },
+        { aanbieder: "Ansvar Idéa", markt: "Particulier Schade", jaar: "2023", duur: "8:08", id: "w41L5xRBzqk", toelichting: "Particulier Schade · 2e plaats 2023" },
         { aanbieder: "Nationale-Nederlanden", markt: "Zakelijk Schade", jaar: "2023", duur: "11:35", id: "fVqcJMRU1YY" },
         { aanbieder: "Nationale-Nederlanden", markt: "ORV", jaar: "2023", duur: "11:54", id: "YrCYWVPm_TE", toelichting: "ORV · Performance-onderzoek 2023" },
         { aanbieder: "TAF", markt: "AOV", jaar: "2023", duur: "12:11", id: "6b-zFjU0fWM" },

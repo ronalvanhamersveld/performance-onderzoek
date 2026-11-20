@@ -275,7 +275,7 @@ p { margin: 0 0 1em; }
 .video-intro { margin: 0; color: var(--tekst-zacht); font-size: .95rem; max-width: 40em; }
 .btn-video { display: inline-flex; align-items: center; gap: 8px; box-shadow: none; }
 .btn-video svg { width: 16px; height: 16px; fill: currentColor; }
-.video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+.video-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
 .video-card { display: flex; flex-direction: column; text-decoration: none; color: var(--tekst); background: var(--wit); border: 1px solid var(--lijn); border-radius: 12px; overflow: hidden; transition: border-color .15s, box-shadow .15s; }
 .video-card:hover { border-color: var(--blauw); box-shadow: var(--schaduw); }
 .video-thumb { position: relative; display: block; aspect-ratio: 16 / 9; max-width: 100%; background: linear-gradient(135deg, var(--blauw), var(--blauw-donker)); }
