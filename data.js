@@ -125,11 +125,10 @@ window.ONDERZOEK = {
         { waarde: "5", label: "productmarkten" }
       ],
       // Link naar de samenvatting (pdf of webpagina). Leeg laten = geen downloadknop.
-      samenvattingUrl: "",
+      samenvattingUrl: "samenvattingen/2026-meting-2.pdf",
       kernbevinding:
         "Of adviseurs een aanbieder aanbevelen, hangt vooral af van partnerschap: een binnendienst die echt meedenkt. Bereikbaarheid, snelle mailafhandeling en overleg zijn de basis. Binnen één markt kan het verschil tussen de beste en zwakste aanbieder oplopen tot ruim drie punten.",
       links: [],
-      noot: "De samenvatting van meting 2 volgt hier binnenkort.",
       winnaarsTitel: "Top 3 binnendienst en acceptatie",
       winnaars: [
         { productgroep: "Hypotheken", winnaar: "Obvion", top3: ["Lloyds Bank", "ING"] },
