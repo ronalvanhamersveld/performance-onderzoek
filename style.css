@@ -124,6 +124,30 @@ p { margin: 0 0 1em; }
 .section-intro { color: var(--tekst-zacht); max-width: 42em; margin: 0; }
 .updated { font-size: .88rem; color: var(--tekst-zacht); white-space: nowrap; margin: 0; }
 
+.facts .fact-wide { flex-basis: 100%; }
+
+/* Metingen */
+.section-compact { padding: 64px 0; }
+.metingen-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: center; }
+.metingen { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 12px; }
+.meting {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px;
+  background: var(--wit); border: 1px solid var(--lijn); border-radius: var(--radius); padding: 16px 20px;
+}
+.meting-open { border-color: var(--blauw); box-shadow: 0 0 0 1px var(--blauw) inset, var(--schaduw); }
+.meting-nr {
+  display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+  background: var(--accent-zacht); color: var(--blauw); font-weight: bold;
+}
+.meting-open .meting-nr { background: var(--blauw); color: var(--wit); }
+.meting-body { min-width: 0; }
+.meting-naam { margin: 0; font-weight: bold; color: var(--navy); }
+.meting-thema { margin: 0; color: var(--tekst-zacht); font-size: .95rem; }
+.pill { font-size: .78rem; font-weight: bold; padding: 4px 11px; border-radius: 999px; white-space: nowrap; }
+.pill-afgerond { background: #DDF3E8; color: #1B6B47; }
+.pill-open { background: var(--blauw); color: var(--wit); }
+.pill-gepland { background: var(--tint); color: var(--tekst-zacht); border: 1px solid var(--lijn); }
+
 /* Opbrengst-kaarten */
 .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 34px; }
 .card { border: 1px solid var(--lijn); border-radius: var(--radius); padding: 26px; background: var(--wit); }
@@ -167,6 +191,9 @@ p { margin: 0 0 1em; }
 .finding { border-left: 3px solid var(--accent); padding: 4px 0 4px 18px; font-size: 1.08rem; color: rgba(255,255,255,.92); }
 .finding-label { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); font-weight: bold; margin-bottom: 6px; }
 .year-link { color: var(--wit); font-weight: bold; text-underline-offset: 4px; }
+.year-links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px 24px; }
+.winner-cell { display: flex; flex-direction: column; align-items: flex-end; text-align: right; gap: 2px; }
+.runner-up { color: var(--tekst-zacht); font-size: .82rem; }
 .winners { background: var(--wit); color: var(--tekst); border-radius: var(--radius); padding: 8px 24px; }
 .winners h3 { margin: 16px 0 6px; }
 .winner-row { display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-top: 1px solid var(--lijn); }
@@ -215,7 +242,8 @@ p { margin: 0 0 1em; }
 @media (max-width: 980px) {
   .main-nav { display: none; }
   .header-inner { justify-content: space-between; }
-  .hero-grid, .year-panel, .impact-grid { grid-template-columns: 1fr; }
+  .hero-grid, .year-panel, .impact-grid, .metingen-grid { grid-template-columns: 1fr; }
+  .metingen-grid { gap: 24px; }
   .card-grid { grid-template-columns: 1fr 1fr; }
   .group-grid { grid-template-columns: 1fr 1fr; }
   .section-head { flex-direction: column; align-items: flex-start; }

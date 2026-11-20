@@ -42,6 +42,9 @@
           <h1>Jouw oordeel bepaalt de winnaars</h1>
           <p class="lead" id="hero-ondertitel"></p>
           <ul class="facts">
+            <li id="fact-thema-li" class="fact-wide"><span class="fact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+            </span><span id="fact-thema"></span></li>
             <li><span class="fact-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
             </span><span id="fact-duur"></span></li>
@@ -67,9 +70,9 @@
           </div>
           <div class="status-split">
             <div><strong id="dagen-over"></strong><span id="dagen-label">dagen nog open</span></div>
-            <div><strong id="groepen-hulp"></strong><span>productgroepen hebben jou nog nodig</span></div>
+            <div><strong id="groepen-hulp"></strong><span>productmarkten hebben jou nog nodig</span></div>
           </div>
-          <a class="status-link" href="#status">Bekijk per productgroep</a>
+          <a class="status-link" href="#status">Bekijk per productmarkt</a>
         </aside>
       </div>
     </section>
@@ -83,14 +86,26 @@
       </div>
     </section>
 
-    <!-- 3. Stand van zaken per productgroep -->
-    <section class="section section-tint" id="status">
+    <!-- 2b. Metingen van dit jaar -->
+    <section class="section section-tint section-compact" id="metingen-sectie">
+      <div class="wrap metingen-grid">
+        <div>
+          <p class="kicker">Nieuw in 2026</p>
+          <h2>Drie metingen, elk met een eigen thema</h2>
+          <p class="section-intro" id="metingen-intro"></p>
+        </div>
+        <ol class="metingen" id="metingen"></ol>
+      </div>
+    </section>
+
+    <!-- 3. Stand van zaken per productmarkt -->
+    <section class="section" id="status">
       <div class="wrap">
         <div class="section-head">
           <div>
             <p class="kicker">Stand van zaken</p>
             <h2>Hier hebben we jou nog nodig</h2>
-            <p class="section-intro">Per productgroep hebben we een minimum aantal beoordelingen nodig om betrouwbare uitspraken te doen. Werk je met aanbieders in een groep die nog achterloopt? Dan telt jouw stem dubbel.</p>
+            <p class="section-intro">Per productmarkt hebben we een minimum aantal beoordelingen nodig om betrouwbare uitspraken te doen. Werk je met aanbieders in een markt die nog achterloopt? Dan telt jouw stem dubbel.</p>
           </div>
           <p class="updated" id="bijgewerkt"></p>
         </div>
@@ -113,7 +128,7 @@
           <li>
             <span class="step-nr">2</span>
             <h3>Wij analyseren onafhankelijk</h3>
-            <p>DFO Onderzoek verwerkt alle beoordelingen anoniem en berekent de scores per productgroep.</p>
+            <p>DFO Onderzoek verwerkt alle beoordelingen anoniem en berekent de scores per productmarkt.</p>
           </li>
           <li>
             <span class="step-nr">3</span>

@@ -22,7 +22,29 @@
   function setText(sel, txt) { $$(sel).forEach(function (el) { el.textContent = txt; }); }
 
   // Voorbeeldbalk
-  if (d.voorbeeld) $("#demo-bar").hidden = false;
+  if (d.voorbeeld) {
+    $("#demo-bar").hidden = false;
+    if (d.voorbeeldTekst) $("#demo-bar").textContent = d.voorbeeldTekst;
+  }
+
+  // Metingen van dit jaar
+  var metingen = d.metingen || [];
+  var open = metingen.filter(function (m) { return m.status === "open"; })[0];
+  var STATUS = { afgerond: "Afgerond", open: "Nu open", gepland: "Gepland" };
+  if (metingen.length && $("#metingen")) {
+    setText("#metingen-intro", d.metingenIntro || "");
+    $("#metingen").innerHTML = metingen.map(function (m, i) {
+      return '<li class="meting meting-' + esc(m.status) + '">' +
+        '<span class="meting-nr" aria-hidden="true">' + (i + 1) + "</span>" +
+        '<div class="meting-body"><p class="meting-naam">' + esc(m.naam) + (m.periode ? ", " + esc(m.periode) : "") + "</p>" +
+        '<p class="meting-thema">' + esc(m.thema) + "</p></div>" +
+        '<span class="pill pill-' + esc(m.status) + '">' + (STATUS[m.status] || esc(m.status)) + "</span></li>";
+    }).join("");
+  } else if ($("#metingen-sectie")) {
+    $("#metingen-sectie").hidden = true;
+  }
+  if (open) setText("#fact-thema", "Thema: " + open.thema);
+  else if ($("#fact-thema-li")) $("#fact-thema-li").hidden = true;
 
   // Deadline
   var vandaag = new Date(); vandaag.setHours(0, 0, 0, 0);
@@ -101,18 +123,24 @@
       t.tabIndex = k === i ? 0 : -1;
     });
     panel.setAttribute("aria-labelledby", "tab-" + i);
+    var cijfers = j.kerncijfers || [];
+    var links = j.links || [];
     panel.innerHTML =
       "<div>" +
-        '<div class="year-stats">' +
-          '<div class="stat"><strong>' + getal(j.beoordelingen) + "</strong><span>beoordelingen door adviseurs</span></div>" +
-          '<div class="stat"><strong>' + getal(j.aanbieders) + "</strong><span>aanbieders beoordeeld</span></div>" +
-        "</div>" +
+        (cijfers.length ? '<div class="year-stats">' + cijfers.map(function (c) {
+          return '<div class="stat"><strong>' + esc(c.waarde) + "</strong><span>" + esc(c.label) + "</span></div>";
+        }).join("") + "</div>" : "") +
         '<p class="finding"><span class="finding-label">Opvallendste uitkomst</span>' + esc(j.kernbevinding) + "</p>" +
-        (j.link ? '<p><a class="year-link" href="' + esc(j.link) + '" target="_blank" rel="noopener">' + esc(j.linkTekst) + "</a></p>" : "") +
+        (links.length ? '<ul class="year-links">' + links.map(function (l) {
+          return '<li><a class="year-link" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.tekst) + "</a></li>";
+        }).join("") + "</ul>" : "") +
       "</div>" +
-      '<div class="winners"><h3>Winnaars ' + esc(j.jaar) + "</h3>" +
+      '<div class="winners"><h3>' + esc(j.winnaarsTitel || "Winnaars " + j.jaar) + "</h3>" +
         j.winnaars.map(function (w) {
-          return '<div class="winner-row"><span>' + esc(w.productgroep) + "</span><strong>" + esc(w.winnaar) + "</strong></div>";
+          var rest = w.top3 && w.top3.length
+            ? '<small class="runner-up">' + w.top3.map(function (n, k) { return (k + 2) + ". " + esc(n); }).join(" &middot; ") + "</small>"
+            : "";
+          return '<div class="winner-row"><span>' + esc(w.productgroep) + '</span><div class="winner-cell"><strong>' + esc(w.winnaar) + "</strong>" + rest + "</div></div>";
         }).join("") +
       "</div>";
   }
