@@ -15,7 +15,7 @@ window.ONDERZOEK = {
   naam: "Performance-onderzoek",
   editie: "2026 · meting 3",
   ondertitel:
-    "Drie keer per jaar beoordelen financieel adviseurs hoe geldverstrekkers en verzekeraars presteren. Adviseurs weten daarna hoe de partijen ervoor staan. Aanbieders zien waar ze kunnen verbeteren.",
+    "Beoordeel in 10 minuten de geldverstrekkers en verzekeraars waar je mee werkt. Je ontvangt een samenvatting van de belangrijkste uitkomsten en helpt de partijen waarmee je samenwerkt hun dienstverlening te verbeteren.",
 
   // Link naar de vragenlijst van de huidige meting.
   vragenlijstUrl: "#vragenlijst-link-volgt",
@@ -50,19 +50,19 @@ window.ONDERZOEK = {
     { waarde: "3", label: "metingen per jaar" }
   ],
 
-  // ADVISEURS: wat deelnemers eraan hebben.
+  // Wat respondenten eraan hebben.
   opbrengst: [
     {
-      titel: "Weet hoe de aanbieders ervoor staan",
-      tekst: "Je ontvangt de vakpaper met de scores per productmarkt. Zo zie je welke geldverstrekkers en verzekeraars het best presteren voor adviseurs."
+      titel: "Je ontvangt een samenvatting",
+      tekst: "Na de meting krijg je een samenvatting van de belangrijkste uitkomsten per productmarkt. Zo weet je hoe de aanbieders ervoor staan."
+    },
+    {
+      titel: "Je helpt jouw aanbieders verbeteren",
+      tekst: "De partijen waarmee je samenwerkt zien wat adviseurs van hun dienstverlening vinden en waar het beter kan. Jouw oordeel helpt ze dat te verbeteren."
     },
     {
       titel: "Jouw stem bepaalt de uitkomst",
-      tekst: "De scores en de beste aanbieders per markt volgen rechtstreeks uit de beoordelingen van financieel adviseurs."
-    },
-    {
-      titel: "Betere service van aanbieders",
-      tekst: "Aanbieders krijgen hun eigen uitkomsten en zien precies waar adviseurs verbetering verwachten."
+      tekst: "De scores en de best beoordeelde aanbieders per markt volgen rechtstreeks uit de beoordelingen van financieel adviseurs."
     },
     {
       titel: "10 minuten en anoniem",
@@ -70,7 +70,10 @@ window.ONDERZOEK = {
     }
   ],
 
-  // AANBIEDERS: wat het rapport oplevert en hoe ze het aanvragen.
+  /* ------------------------------------------------------------------
+     BEWAARD VOOR LATER: teksten voor een pagina voor aanbieders.
+     Deze worden op de huidige pagina NIET getoond.
+     ------------------------------------------------------------------ */
   aanbieders: {
     kop: "Weet hoe adviseurs uw dienstverlening beoordelen",
     intro: "Het Performance-onderzoek laat per productmarkt zien hoe financieel adviseurs uw organisatie beoordelen en hoe u scoort ten opzichte van de markt. Per meting ontvangt u een eigen rapport.",
@@ -174,6 +177,7 @@ window.ONDERZOEK = {
     ]
   },
 
+  // BEWAARD VOOR LATER: vragen voor aanbieders (worden nu niet getoond).
   faqAanbieders: [
     { vraag: "Welke productmarkten worden onderzocht?", antwoord: "Hypotheken, Particulier Schade, Zakelijk Schade, Lijfrente, ORV en AOV. Per productmarkt ontvangt u een eigen rapport." },
     { vraag: "Wat staat er in het rapport?", antwoord: "Per meting uw scores op de kwaliteitsaspecten van het thema, het belang dat adviseurs aan elk aspect hechten, uw NPS en de vergelijking met het marktgemiddelde." },
@@ -187,7 +191,8 @@ window.ONDERZOEK = {
     { vraag: "Waarom drie metingen per jaar?", antwoord: "Vanaf 2026 doen we het Performance-onderzoek in drie metingen, elk met een eigen thema: in het voorjaar accountmanagement en buitendienst, in de zomer binnendienst en acceptatie, in het najaar processen en digitale ondersteuning. Zo gaat elke vragenlijst over één thema en zijn de uitkomsten actueler." },
     { vraag: "Hoe lang duurt het invullen?", antwoord: "Ongeveer 10 minuten. Je beoordeelt alleen de aanbieders waar je zelf mee werkt, dus je slaat over wat niet voor jou geldt." },
     { vraag: "Zijn mijn antwoorden anoniem?", antwoord: "Ja. We rapporteren alleen op groepsniveau. Je antwoorden zijn nooit terug te leiden naar jou of je kantoor." },
-    { vraag: "Hoe krijg ik de vakpaper?", antwoord: "Aan het eind van de vragenlijst laat je je e-mailadres achter. Dat gebruiken we alleen om je de vakpaper te sturen en we slaan het los van je antwoorden op." },
+    { vraag: "Hoe krijg ik de samenvatting?", antwoord: "Aan het eind van de vragenlijst laat je je e-mailadres achter. Dat gebruiken we alleen om je de samenvatting te sturen en we slaan het los van je antwoorden op." },
+    { vraag: "Wat doen de aanbieders met mijn oordeel?", antwoord: "De aanbieders zien hoe adviseurs hun dienstverlening beoordelen en op welke punten het beter kan. Zo helpt jouw oordeel de partijen waarmee je samenwerkt om hun service te verbeteren." },
     { vraag: "Wie voert het onderzoek uit?", antwoord: "DFO Onderzoek, onderdeel van Bureau DFO in Hoevelaken, in samenwerking met Atentikmarketing." }
   ]
 };

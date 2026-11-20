@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Performance-onderzoek | DFO Onderzoek</title>
-  <meta name="description" content="Het Performance-onderzoek van DFO Onderzoek: hoe financieel adviseurs geldverstrekkers en verzekeraars beoordelen. Doe mee als adviseur of vraag als aanbieder uw rapport aan.">
+  <meta name="description" content="Doe mee aan het Performance-onderzoek van DFO Onderzoek. Beoordeel in 10 minuten de geldverstrekkers en verzekeraars waar je mee werkt en weet hoe de aanbieders ervoor staan.">
   <meta property="og:title" content="Performance-onderzoek | DFO Onderzoek">
-  <meta property="og:description" content="Hoe staan de aanbieders ervoor? Doe mee als adviseur of vraag als aanbieder uw rapport aan.">
+  <meta property="og:description" content="Hoe staan de aanbieders ervoor? Beoordeel ze in 10 minuten en ontvang de uitkomsten per productmarkt.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/logo.png">
   <meta name="theme-color" content="#005EA9">
@@ -22,76 +22,52 @@
         <img src="assets/logo.png" alt="DFO Onderzoek" width="160" height="56">
       </a>
       <nav class="main-nav" aria-label="Hoofdmenu">
-        <a href="#adviseurs">Voor adviseurs</a>
-        <a href="#aanbieders">Voor aanbieders</a>
+        <a href="#adviseurs">Waarom meedoen</a>
+        <a href="#status">Stand van zaken</a>
         <a href="#resultaten">Resultaten</a>
         <a href="#vragen">Vragen</a>
       </nav>
-      <div class="header-actions">
-        <a class="btn btn-small btn-outline js-aanvraag" href="#aanbieders">Rapport aanvragen</a>
-        <a class="btn btn-small js-cta" href="#">Doe mee</a>
-      </div>
+      <a class="btn btn-small js-cta" href="#">Doe mee</a>
     </div>
   </header>
 
   <main id="top">
-    <!-- 1. Hero met twee routes -->
+    <!-- 1. Hero -->
     <section class="hero">
-      <div class="wrap">
+      <div class="wrap hero-grid">
         <div class="hero-text">
           <p class="eyebrow"><span id="hero-naam"></span> <span id="hero-editie"></span></p>
           <h1>Hoe staan de aanbieders ervoor?</h1>
           <p class="lead" id="hero-ondertitel"></p>
+          <div class="hero-actions">
+            <a class="btn btn-light js-cta" href="#">Start de vragenlijst</a>
+            <a class="link-light" href="#resultaten">Bekijk eerdere resultaten</a>
+          </div>
         </div>
 
-        <div class="paths">
-          <article class="path path-adviseur" aria-labelledby="path-adviseur-title">
-            <p class="path-label">Voor financieel adviseurs</p>
-            <h2 id="path-adviseur-title">Vul <span class="js-meting-naam">meting 3</span> in</h2>
-            <p>Beoordeel de aanbieders waar je mee werkt. Je ontvangt de uitkomsten per productmarkt, zodat je weet hoe de partijen ervoor staan.</p>
-            <ul class="facts">
-              <li id="fact-thema-li"><span class="fact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
-              </span><span id="fact-thema"></span></li>
-              <li><span class="fact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-              </span><span id="fact-duur"></span></li>
-              <li><span class="fact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>
-              </span><span id="fact-sluit"></span></li>
-            </ul>
-            <div class="mini-status">
-              <div class="mini-status-top">
-                <span><strong id="totaal-pct">0</strong>% van de benodigde beoordelingen</span>
-                <span id="dagen-tekst"></span>
-              </div>
-              <div class="bar" role="progressbar" aria-label="Voortgang meting" aria-valuemin="0" aria-valuemax="100" id="totaal-bar"><span></span></div>
+        <aside class="path path-adviseur" aria-labelledby="meting-kaart-titel">
+          <p class="path-label">Nu open</p>
+          <h2 id="meting-kaart-titel">Vul <span class="js-meting-naam">meting 3</span> in</h2>
+          <ul class="facts">
+            <li id="fact-thema-li"><span class="fact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+            </span><span id="fact-thema"></span></li>
+            <li><span class="fact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span><span id="fact-duur"></span></li>
+            <li><span class="fact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>
+            </span><span id="fact-sluit"></span></li>
+          </ul>
+          <div class="mini-status">
+            <div class="mini-status-top">
+              <span><strong id="totaal-pct">0</strong>% van de benodigde beoordelingen</span>
+              <span id="dagen-tekst"></span>
             </div>
-            <div class="path-actions">
-              <a class="btn js-cta" href="#">Start de vragenlijst</a>
-              <a class="path-link" href="#adviseurs">Waarom meedoen?</a>
-            </div>
-          </article>
-
-          <article class="path path-aanbieder" aria-labelledby="path-aanbieder-title">
-            <p class="path-label">Voor geldverstrekkers en verzekeraars</p>
-            <h2 id="path-aanbieder-title">Neem het rapport af</h2>
-            <p>Zie hoe adviseurs uw dienstverlening beoordelen, per productmarkt en per meting, naast het gemiddelde van de markt.</p>
-            <ul class="checks">
-              <li>Eigen rapport per productmarkt</li>
-              <li>Uw NPS en scores per kwaliteitsaspect</li>
-              <li>Compleet pakket 2026, inclusief meting 3</li>
-            </ul>
-            <div class="mini-proof">
-              <p class="mini-proof-label">Uit <span class="js-bewijs-label"></span></p>
-              <p class="js-bewijs-tekst"></p>
-            </div>
-            <div class="path-actions">
-              <a class="btn btn-light js-aanvraag" href="#aanbieders">Vraag het rapport aan</a>
-              <a class="path-link path-link-light" href="#aanbieders">Wat staat erin?</a>
-            </div>
-          </article>
-        </div>
+            <div class="bar" role="progressbar" aria-label="Voortgang meting" aria-valuemin="0" aria-valuemax="100" id="totaal-bar"><span></span></div>
+          </div>
+          <a class="status-link" href="#status">Bekijk per productmarkt</a>
+        </aside>
       </div>
     </section>
 
@@ -100,7 +76,16 @@
       <div class="wrap figures-row" id="kerncijfers"></div>
     </section>
 
-    <!-- 3. Metingen van dit jaar -->
+    <!-- 3. Waarom meedoen -->
+    <section class="section" id="adviseurs">
+      <div class="wrap">
+        <p class="kicker">Waarom meedoen</p>
+        <h2>10 minuten van jou, en je weet hoe de markt ervoor staat</h2>
+        <div class="card-grid" id="opbrengst-lijst"></div>
+      </div>
+    </section>
+
+    <!-- 4. Metingen van dit jaar -->
     <section class="section section-tint section-compact" id="metingen-sectie">
       <div class="wrap metingen-grid">
         <div>
@@ -112,16 +97,13 @@
       </div>
     </section>
 
-    <!-- 4. Voor adviseurs -->
-    <section class="section" id="adviseurs">
+    <!-- 5. Stand van zaken -->
+    <section class="section" id="status">
       <div class="wrap">
-        <p class="kicker">Voor adviseurs</p>
-        <h2>Weet hoe de aanbieders ervoor staan</h2>
-        <div class="card-grid" id="opbrengst-lijst"></div>
-
-        <div class="section-head status-head" id="status">
+        <div class="section-head">
           <div>
-            <h3 class="sub-title">Stand van zaken <span class="js-meting-naam">meting 3</span></h3>
+            <p class="kicker">Stand van zaken <span class="js-meting-naam">meting 3</span></p>
+            <h2>Hier hebben we jou nog nodig</h2>
             <p class="section-intro">Per productmarkt hebben we een minimum aantal beoordelingen nodig om betrouwbare uitspraken te doen. Werk je met aanbieders in een markt die nog achterloopt? Dan telt jouw stem dubbel.</p>
           </div>
           <p class="updated" id="bijgewerkt"></p>
@@ -131,36 +113,13 @@
       </div>
     </section>
 
-    <!-- 5. Eerdere resultaten -->
+    <!-- 6. Eerdere resultaten -->
     <section class="section section-dark" id="resultaten">
       <div class="wrap">
         <p class="kicker kicker-light">Eerdere resultaten</p>
         <h2>Zo oordeelden adviseurs eerder</h2>
         <div class="tabs" role="tablist" aria-label="Kies een meting of jaar" id="jaar-tabs"></div>
         <div id="jaar-panel" role="tabpanel" class="year-panel"></div>
-      </div>
-    </section>
-
-    <!-- 6. Voor aanbieders -->
-    <section class="section section-aanbieders" id="aanbieders">
-      <div class="wrap">
-        <div class="aanbieders-top">
-          <div>
-            <p class="kicker">Voor geldverstrekkers en verzekeraars</p>
-            <h2 id="aanbieders-kop"></h2>
-            <p class="section-intro" id="aanbieders-intro"></p>
-          </div>
-          <aside class="proof" aria-label="Uitkomst uit het onderzoek">
-            <p class="proof-label" id="bewijs-label"></p>
-            <p class="proof-text" id="bewijs-tekst"></p>
-          </aside>
-        </div>
-        <ul class="benefits" id="aanbieders-voordelen"></ul>
-        <div class="packages" id="pakketten"></div>
-        <div class="contact-row">
-          <a class="btn js-aanvraag" href="#">Vraag het rapport aan</a>
-          <p id="aanbieders-contact"></p>
-        </div>
       </div>
     </section>
 
@@ -172,8 +131,8 @@
           <figcaption id="impact-bron"></figcaption>
         </figure>
         <div>
-          <p class="kicker">Wat er met de uitkomsten gebeurt</p>
-          <h2>Het oordeel van adviseurs komt aan</h2>
+          <p class="kicker">Wat er met jouw oordeel gebeurt</p>
+          <h2>Jouw oordeel komt aan</h2>
           <ul class="impact-list" id="impact-punten"></ul>
         </div>
       </div>
@@ -181,35 +140,21 @@
 
     <!-- 8. Vragen -->
     <section class="section section-tint" id="vragen">
-      <div class="wrap">
+      <div class="wrap narrow">
         <p class="kicker">Veelgestelde vragen</p>
         <h2>Goed om te weten</h2>
-        <div class="faq-grid">
-          <div>
-            <h3 class="faq-title">Voor adviseurs</h3>
-            <div class="faq" id="faq"></div>
-          </div>
-          <div>
-            <h3 class="faq-title">Voor aanbieders</h3>
-            <div class="faq" id="faq-aanbieders"></div>
-          </div>
-        </div>
+        <div class="faq" id="faq"></div>
       </div>
     </section>
 
     <!-- 9. Afsluiter -->
     <section class="final-cta">
-      <div class="wrap final-grid">
-        <div class="final-item">
-          <h2>Adviseur? Doe mee voor <span id="final-sluit"></span></h2>
+      <div class="wrap final-inner">
+        <div>
+          <h2>Doe mee voor <span id="final-sluit"></span></h2>
           <p>Het kost je ongeveer <span class="js-duur"></span> minuten en je weet daarna hoe de aanbieders ervoor staan.</p>
-          <a class="btn btn-light js-cta" href="#">Start de vragenlijst</a>
         </div>
-        <div class="final-item">
-          <h2>Aanbieder? Vraag uw rapport aan</h2>
-          <p>Met het complete pakket 2026 ontvangt u ook het rapport van meting 3.</p>
-          <a class="btn btn-ghost js-aanvraag" href="#">Vraag het rapport aan</a>
-        </div>
+        <a class="btn btn-light js-cta" href="#">Start de vragenlijst</a>
       </div>
     </section>
   </main>

@@ -118,9 +118,9 @@
 
   // Opbrengst voor adviseurs
   var iconen = [
-    '<path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/>',
-    '<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
+    '<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/>',
     '<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>',
+    '<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
     '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'
   ];
   setHtml("#opbrengst-lijst", d.opbrengst.map(function (o, i) {

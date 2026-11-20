@@ -245,6 +245,8 @@ p { margin: 0 0 1em; }
 .hero { padding: 64px 0 72px; }
 .hero-text { max-width: 760px; }
 .hero-text .lead { margin-bottom: 0; }
+.hero-text .hero-actions { margin-top: 30px; }
+.hero-grid .path-adviseur { gap: 16px; }
 .paths { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
 .path { border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .path p { margin: 0; }
