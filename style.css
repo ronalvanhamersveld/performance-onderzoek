@@ -194,6 +194,32 @@ p { margin: 0 0 1em; }
 .year-links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px 24px; }
 .winner-cell { display: flex; flex-direction: column; align-items: flex-end; text-align: right; gap: 2px; }
 .runner-up { color: var(--tekst-zacht); font-size: .82rem; }
+.year-download { margin: 18px 0 0; }
+
+/* Voorbereidingslink */
+.prep-band { background: linear-gradient(135deg, var(--blauw), var(--blauw-donker)); color: var(--wit); padding: 56px 0; }
+.prep-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+.prep-text h2 { color: var(--wit); }
+.prep-text p { color: rgba(255,255,255,.9); max-width: 36em; margin-bottom: 24px; }
+.prep-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.prep-steps li { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2); border-radius: 12px; padding: 14px 16px; font-weight: bold; }
+.prep-nr { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: var(--navy); }
+.prep-hint { margin: 2px 0 0; padding-top: 14px; border-top: 1px solid var(--lijn); font-size: .9rem; color: var(--tekst-zacht); }
+.prep-hint a { font-weight: bold; }
+@media (max-width: 980px) { .prep-grid { grid-template-columns: 1fr; gap: 28px; } }
+.press { margin-top: 48px; }
+.press-title { font-size: 1rem; text-transform: uppercase; letter-spacing: .08em; color: var(--tekst-zacht); margin-bottom: 14px; }
+.press-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+.press-more { margin-top: 14px; }
+.press-more summary { cursor: pointer; font-weight: bold; color: var(--blauw); padding: 6px 0; }
+.press-more .press-list { margin-top: 12px; }
+.press-title-gap { margin-top: 36px; }
+.press-list a { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 16px 18px; border: 1px solid var(--lijn); border-radius: 12px; text-decoration: none; color: var(--tekst); background: var(--wit); transition: border-color .15s, box-shadow .15s; }
+.press-list a:hover { border-color: var(--blauw); box-shadow: var(--schaduw); }
+.press-medium { font-weight: bold; color: var(--blauw); }
+.press-head { font-size: .95rem; }
+.press-date { font-size: .82rem; color: var(--tekst-zacht); }
+@media (max-width: 640px) { .press-list { grid-template-columns: 1fr; } }
 .year-note { margin: 16px 0 0; padding: 12px 16px; border-radius: 10px; background: rgba(110,193,228,.14); color: var(--wit); font-size: .95rem; }
 .winners { background: var(--wit); color: var(--tekst); border-radius: var(--radius); padding: 8px 24px; }
 .winners h3 { margin: 16px 0 6px; }

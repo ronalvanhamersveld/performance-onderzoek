@@ -74,6 +74,24 @@
   else $("#fact-thema-li").hidden = true;
   setText("#dagen-tekst", gesloten ? "Gesloten" : dagen === 1 ? "nog 1 dag" : "nog " + dagen + " dagen");
 
+  // Voorbereidingslink
+  var prep = d.voorbereiding || {};
+  if (prep.url) {
+    setText("#prep-kop", prep.kop || "");
+    setText("#prep-tekst", prep.tekst || "");
+    setHtml("#prep-stappen", (prep.stappen || []).map(function (s, i) {
+      return '<li><span class="prep-nr" aria-hidden="true">' + (i + 1) + "</span><span>" + esc(s) + "</span></li>";
+    }).join(""));
+    $$(".js-prep").forEach(function (a) {
+      a.href = prep.url;
+      if (prep.knop) a.textContent = prep.knop;
+      if (/^https?:/.test(prep.url)) { a.target = "_blank"; a.rel = "noopener"; }
+    });
+  } else {
+    if ($("#voorbereiding")) $("#voorbereiding").hidden = true;
+    if ($("#prep-hint")) $("#prep-hint").hidden = true;
+  }
+
   // Kerncijfers
   setHtml("#kerncijfers", (d.kerncijfers || []).map(function (k) {
     return '<div class="figure"><strong>' + esc(k.waarde) + "</strong><span>" + esc(k.label) + "</span></div>";
@@ -169,7 +187,9 @@
         (links.length ? '<ul class="year-links">' + links.map(function (l) {
           return '<li><a class="year-link" href="' + esc(l.url) + '"' + linkAttrs(l.url) + ">" + esc(l.tekst) + "</a></li>";
         }).join("") + "</ul>" : "") +
-        (j.noot ? '<p class="year-note">' + esc(j.noot) + "</p>" : "") +
+        (j.samenvattingUrl
+          ? '<p class="year-download"><a class="btn btn-light btn-small" href="' + esc(j.samenvattingUrl) + '"' + linkAttrs(j.samenvattingUrl) + ">Download de samenvatting</a></p>"
+          : (j.noot ? '<p class="year-note">' + esc(j.noot) + "</p>" : "")) +
       "</div>" +
       '<div class="winners"><h3>' + esc(j.winnaarsTitel || "Winnaars " + j.jaar) + "</h3>" +
         j.winnaars.map(function (w) {
@@ -201,6 +221,22 @@
     var titel = p.link ? '<a href="' + esc(p.link) + '"' + linkAttrs(p.link) + ">" + esc(p.titel) + "</a>" : esc(p.titel);
     return "<li><strong>" + titel + "</strong><p>" + esc(p.tekst) + "</p></li>";
   }).join(""));
+  function persKaarten(lijst) {
+    return '<ul class="press-list">' + lijst.map(function (a) {
+      return '<li><a href="' + esc(a.url) + '"' + linkAttrs(a.url) + '><span class="press-medium">' + esc(a.medium) + '</span><span class="press-head">' + esc(a.titel) + '</span><span class="press-date">' + esc(a.datum) + "</span></a></li>";
+    }).join("") + "</ul>";
+  }
+  var pers = d.impact.vakpers || [], eigen = d.impact.aanbiedersOver || [], persHtml = "";
+  if (pers.length) {
+    persHtml += '<h3 class="press-title">In de vakpers</h3>' + persKaarten(pers.slice(0, 4));
+    if (pers.length > 4) {
+      persHtml += '<details class="press-more"><summary>Nog ' + (pers.length - 4) + " artikelen</summary>" + persKaarten(pers.slice(4)) + "</details>";
+    }
+  }
+  if (eigen.length) {
+    persHtml += '<h3 class="press-title press-title-gap">De winnaars delen hun resultaat</h3>' + persKaarten(eigen);
+  }
+  if (persHtml && $("#vakpers")) setHtml("#vakpers", persHtml);
 
   // FAQ
   function faqHtml(lijst) {

@@ -10,7 +10,7 @@
 */
 window.ONDERZOEK = {
   voorbeeld: true,
-  voorbeeldTekst: "Voorbeeldversie: de stand per productmarkt, de sluitdatum en de link naar de vragenlijst zijn nog niet echt.",
+  voorbeeldTekst: "Voorbeeldversie: de stand per productmarkt, de sluitdatum, de link naar de vragenlijst en de voorbereidingslink zijn nog niet echt.",
 
   naam: "Performance-onderzoek",
   editie: "2026 · meting 3",
@@ -42,6 +42,22 @@ window.ONDERZOEK = {
     { naam: "Overlijdensrisico (ORV)", doel: 80, huidig: 52 },
     { naam: "Arbeidsongeschiktheid (AOV)", doel: 100, huidig: 48 }
   ],
+
+  // Voorbereidingslink: adviseurs vullen één keer hun kantoorgegevens in,
+  // zodat ze die niet bij elke meting opnieuw hoeven in te vullen.
+  // Laat url leeg ("") om het blok te verbergen.
+  voorbereiding: {
+    url: "#voorbereiding-link-volgt",
+    besparing: "5 minuten",
+    kop: "Bespaar 5 minuten per meting",
+    tekst: "Vul één keer je kantoorgegevens in, zoals de grootte van je kantoor, je regio en de productmarkten waarin je adviseert. Bij elke volgende meting hoef je die niet opnieuw in te vullen en beoordeel je direct de aanbieders.",
+    stappen: [
+      "Vul eenmalig je kantoorgegevens in",
+      "Je krijgt bij elke meting een persoonlijke link",
+      "Je beoordeelt direct de aanbieders waar je mee werkt"
+    ],
+    knop: "Vul je gegevens alvast in"
+  },
 
   // Kerncijfers bovenaan de pagina (voor beide doelgroepen).
   kerncijfers: [
@@ -99,7 +115,8 @@ window.ONDERZOEK = {
   // Eerdere resultaten. Nieuwste bovenaan.
   // Bron: de samenvattingen voor adviseurs (2024, 2025, 2026 meting 1 en 2) en de persberichten.
   // top3 is optioneel: de 2e en 3e plaats. Laat weg als die niet bekend is.
-  // noot is optioneel: een korte zin onder de links.
+  // samenvattingUrl: vul hier de downloadlink in. Leeg = geen knop.
+  // noot is optioneel: een korte zin, alleen getoond als er geen downloadlink is.
   vorigeJaren: [
     {
       jaar: "2026 · meting 2",
@@ -107,10 +124,12 @@ window.ONDERZOEK = {
         { waarde: "1.300+", label: "beoordelingen door adviseurs" },
         { waarde: "5", label: "productmarkten" }
       ],
+      // Link naar de samenvatting (pdf of webpagina). Leeg laten = geen downloadknop.
+      samenvattingUrl: "",
       kernbevinding:
         "Of adviseurs een aanbieder aanbevelen, hangt vooral af van partnerschap: een binnendienst die echt meedenkt. Bereikbaarheid, snelle mailafhandeling en overleg zijn de basis. Binnen één markt kan het verschil tussen de beste en zwakste aanbieder oplopen tot ruim drie punten.",
       links: [],
-      noot: "Als deelnemer ontvang je de samenvatting met alle uitkomsten per productmarkt.",
+      noot: "De samenvatting van meting 2 volgt hier binnenkort.",
       winnaarsTitel: "Top 3 binnendienst en acceptatie",
       winnaars: [
         { productgroep: "Hypotheken", winnaar: "Obvion", top3: ["Lloyds Bank", "ING"] },
@@ -126,12 +145,13 @@ window.ONDERZOEK = {
         { waarde: "2.027", label: "beoordelingen door adviseurs" },
         { waarde: "6", label: "productmarkten" }
       ],
+      // Link naar de samenvatting (pdf of webpagina). Leeg laten = geen downloadknop.
+      samenvattingUrl: "https://www.dfobv.nl/wp-content/uploads/2026/10/Samenvatting-Performance-onderzoek-Kwaliteit-accountmanagement-en-buitendienst-2026-itleyn.pdf",
       kernbevinding:
         "Adviseurs hechten in alle markten het meest aan een vast contactpersoon en een goed bereikbare accountmanager. Aanbieders met een hoog gewaardeerde buitendienst worden vaker aanbevolen.",
       links: [
         { tekst: "Lees het persbericht", url: "https://www.dfobv.nl/wp-content/uploads/2026/05/Persbericht-Performance-onderzoek-aanbieders-Kwaliteit-Accountmanagement-en-Buitendienst.pdf" }
       ],
-      noot: "Als deelnemer ontvang je de samenvatting met alle uitkomsten per productmarkt.",
       winnaarsTitel: "Top 3 accountmanagement en buitendienst",
       winnaars: [
         { productgroep: "Hypotheken", winnaar: "ING", top3: ["Centraal Beheer", "Obvion"] },
@@ -148,6 +168,8 @@ window.ONDERZOEK = {
         { waarde: "6", label: "productmarkten" },
         { waarde: "13", label: "hypotheekaanbieders per adviseur, gemiddeld" }
       ],
+      // Link naar de samenvatting (pdf of webpagina). Leeg laten = geen downloadknop.
+      samenvattingUrl: "https://cdn.flxml.eu/f-ed177c96b1179d08",
       kernbevinding:
         "De deskundigheid van de binnendienst is een belangrijke factor: een adviseur wil iemand spreken die meer van het vraagstuk weet dan hij zelf. Bij hypotheken weegt de mogelijkheid tot overleg het zwaarst, bij AOV de claimafhandeling.",
       links: [
@@ -169,6 +191,8 @@ window.ONDERZOEK = {
         { waarde: "2.600+", label: "beoordelingen door adviseurs" },
         { waarde: "5", label: "productmarkten" }
       ],
+      // Link naar de samenvatting (pdf of webpagina). Leeg laten = geen downloadknop.
+      samenvattingUrl: "https://www.dfobv.nl/product/gratis-vakpaper-performance-onderzoek-2024/",
       kernbevinding:
         "Bij hypotheken vinden adviseurs de mogelijkheid tot overleg het allerbelangrijkst, met goede telefonische bereikbaarheid als randvoorwaarde. Een hypotheekadviseur werkt gemiddeld met meer dan 10 aanbieders.",
       links: [
@@ -192,9 +216,35 @@ window.ONDERZOEK = {
       "Waar processen steeds verder digitaliseren, blijft persoonlijk contact bepalend voor vertrouwen en samenwerking.",
     bron: "Jurjen Oosterbaan Martinius, directeur Bureau DFO (persbericht mei 2026)",
     punten: [
-      { titel: "In de vakpers", tekst: "De winnaars en uitkomsten worden overgenomen door vakmedia, zoals VVP.", link: "https://vvponline.nl/nieuws/winnaars-dfo-performance-onderzoek-aanbieders-2024/" },
       { titel: "Gratis vakpaper voor alle adviseurs", tekst: "Na elke meting delen we de uitkomsten in een vakpaper, aangeboden door de deelnemende aanbieders.", link: "https://www2.dfobv.nl/maand-van-de-performance/" },
       { titel: "Winnaars in beeld", tekst: "De beste aanbieders per productmarkt worden bekendgemaakt en gaan aan de slag met hun uitkomsten.", link: "https://www2.dfobv.nl/winnaars-performance-onderzoek-2025/" }
+    ],
+    // Artikelen in de vakpers over het onderzoek. Nieuwste bovenaan.
+    // De eerste 4 staan direct op de pagina, de rest onder "Alle artikelen".
+    vakpers: [
+      { medium: "Risk & Business", datum: "september 2026", titel: "Goudse beste aanbieder zakelijk schade; Nh1816 bij particulier", url: "https://riskenbusiness.nl/nieuws/insurance/performance-onderzoek-2026-goudse-beste-aanbieder-zakelijk-schade-nh1816-verzekeringen-bij-particulier/" },
+      { medium: "InFinance", datum: "september 2026", titel: "‘Binnendienst is onderdeel van dienstverlening’", url: "https://infinance.nl/artikel/binnendienst-is-onderdeel-van-dienstverlening/" },
+      { medium: "Schade Magazine", datum: "juni 2026", titel: "Onderzoek naar kwaliteit binnendienst en acceptatie", url: "https://schade-magazine.nl/nieuws/archief/2026/06/onderzoek-naar-kwaliteit-binnendienst-en-acceptatie/12870" },
+      { medium: "Risk & Business", datum: "mei 2026", titel: "Hoge waardering buitendienst leidt tot hogere NPS en groter omzetaandeel", url: "https://riskenbusiness.nl/nieuws/insurance/hoge-waardering-buitendienst-leidt-tot-hogere-nps-en-groter-omzetaandeel/" },
+      { medium: "Schade Magazine", datum: "maart 2026", titel: "Vernieuwd Performance-onderzoek 2026", url: "https://www.schade-magazine.nl/nieuws/archief/2026/03/vernieuwd-performance-onderzoek-2026-meer-inzicht-in-kwaliteit-van-de-buitendienst/12563" },
+      { medium: "InFinance", datum: "maart 2026", titel: "Vernieuwde opzet Performance-onderzoek", url: "https://infinance.nl/branche/vernieuwde-opzet-performance-onderzoek-van-bureau-dfo/" },
+      { medium: "Risk & Business", datum: "september 2025", titel: "Deskundigheid binnendienst en acceptatiebeleid zijn de sleutel voor hoge waardering", url: "https://riskenbusiness.nl/nieuws/insurance/resultaten-performance-onderzoek-bureau-dfo-deskundigheid-binnendienst-en-acceptatiebeleid-zijn-de-sleutel-voor-hoge-waardering/" },
+      { medium: "InFinance", datum: "september 2025", titel: "Winnaars Performance-onderzoek Bureau DFO", url: "https://infinance.nl/artikel/winnaars-performanceonderzoek-bureau-dfo/" },
+      { medium: "Schade Magazine", datum: "september 2025", titel: "Resultaten Performance-onderzoek", url: "https://www.schade-magazine.nl/nieuws/archief/2025/09/resultaten-performance-onderzoek/11944" },
+      { medium: "Risk & Business", datum: "september 2024", titel: "NN opnieuw winnaar bij Zakelijk Schade", url: "https://riskenbusiness.nl/nieuws/insurance/performance-onderzoek-aanbieders-nn-opnieuw-winnaar-bij-zakelijk-schade/" },
+      { medium: "Schade Magazine", datum: "september 2024", titel: "Winnaars Performance-onderzoek aanbieders 2024 bekend", url: "https://schade-magazine.nl/nieuws/archief/2024/09/winnaars-performance-onderzoek-aanbieder-2024-bekend/10900" },
+      { medium: "VVP", datum: "2024", titel: "Winnaars Performance-onderzoek aanbieders 2024", url: "https://vvponline.nl/nieuws/winnaars-dfo-performance-onderzoek-aanbieders-2024/" },
+      { medium: "Risk & Business", datum: "oktober 2023", titel: "Winnaars 2023 bekend: ING, Nh1816, TAF, OAKK, Scildon en Nationale-Nederlanden", url: "https://riskenbusiness.nl/nieuws/insurance/winnaars-performance-onderzoek-aanbieders-2023-bekend-ing-nh1816-taf-oakk-scildon-en-nationale-nederlanden/" },
+      { medium: "InFinance", datum: "2023", titel: "Winnaars Performance-onderzoek aanbieders 2023", url: "https://www.infinance.nl/artikel/winnaars-performance-onderzoek-aanbieders-2023/" },
+      { medium: "VVP", datum: "2023", titel: "Winnaars Performance-onderzoek aanbieders 2023", url: "https://vvponline.nl/nieuws/winnaars-bekend-dfo-performance-onderzoek-aanbieders-2023/" }
+    ],
+    // Berichten van aanbieders zelf over hun resultaat.
+    aanbiedersOver: [
+      { medium: "TAF", datum: "oktober 2026", titel: "Best gewaardeerde binnendienst in de ORV-markt", url: "https://www.taf.nl/over-taf/taf-nieuws/taf-heeft-beste-binnendienst-orv" },
+      { medium: "OAKK", datum: "mei 2026", titel: "Als beste beoordeeld op buitendienst", url: "https://oakk.nl/oakk-als-beste-beoordeeld-op-buitendienst-in-performance-onderzoek-2026/" },
+      { medium: "OAKK", datum: "oktober 2025", titel: "Beste aanbieder lijfrente 2025", url: "https://oakk.nl/beste-aanbieder-lijfrente-2025-onderzoeksresultaten-dfo-rapport/" },
+      { medium: "TAF", datum: "september 2025", titel: "Nummer 1 in DFO Performance-onderzoek 2025", url: "https://www.taf.nl/over-taf/taf-nieuws/taf-nummer-1-dfo-performance-onderzoek-2025" },
+      { medium: "TAF", datum: "2024", titel: "Ook in 2024 beste aanbieder Inkomen/AOV", url: "https://www.taf.nl/over-taf/taf-nieuws/taf-ook-2024-beste-aanbieder-inkomenaov" }
     ]
   },
 
@@ -212,6 +262,7 @@ window.ONDERZOEK = {
     { vraag: "Waarom drie metingen per jaar?", antwoord: "Vanaf 2026 doen we het Performance-onderzoek in drie metingen, elk met een eigen thema: in het voorjaar accountmanagement en buitendienst, in de zomer binnendienst en acceptatie, in het najaar processen en digitale ondersteuning. Zo gaat elke vragenlijst over één thema en zijn de uitkomsten actueler." },
     { vraag: "Hoe lang duurt het invullen?", antwoord: "Ongeveer 10 minuten. Je beoordeelt alleen de aanbieders waar je zelf mee werkt, dus je slaat over wat niet voor jou geldt." },
     { vraag: "Zijn mijn antwoorden anoniem?", antwoord: "Ja. We rapporteren alleen op groepsniveau. Je antwoorden zijn nooit terug te leiden naar jou of je kantoor." },
+    { vraag: "Wat is de voorbereidingslink?", antwoord: "Met de voorbereidingslink vul je één keer je kantoorgegevens in. Bij de volgende metingen hoef je die niet opnieuw in te vullen. Dat scheelt je ongeveer 5 minuten per meting." },
     { vraag: "Hoe krijg ik de samenvatting?", antwoord: "Aan het eind van de vragenlijst laat je je e-mailadres achter. Dat gebruiken we alleen om je de samenvatting te sturen en we slaan het los van je antwoorden op." },
     { vraag: "Wat doen de aanbieders met mijn oordeel?", antwoord: "De aanbieders zien hoe adviseurs hun dienstverlening beoordelen en op welke punten het beter kan. Zo helpt jouw oordeel de partijen waarmee je samenwerkt om hun service te verbeteren." },
     { vraag: "Wie voert het onderzoek uit?", antwoord: "DFO Onderzoek, onderdeel van Bureau DFO in Hoevelaken, in samenwerking met Atentikmarketing." }
