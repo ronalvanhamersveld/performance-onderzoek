@@ -285,6 +285,21 @@ window.ONDERZOEK = {
       { medium: "InFinance", datum: "2023", titel: "Winnaars Performance-onderzoek aanbieders 2023", url: "https://www.infinance.nl/artikel/winnaars-performance-onderzoek-aanbieders-2023/" },
       { medium: "VVP", datum: "2023", titel: "Winnaars Performance-onderzoek aanbieders 2023", url: "https://vvponline.nl/nieuws/winnaars-bekend-dfo-performance-onderzoek-aanbieders-2023/" }
     ],
+    // Video's: gesprekken met winnaars, opgenomen bij Bureau DFO. id = de code uit de YouTube-link.
+    // toelichting is optioneel en vervangt de regel "markt · winnaar jaar".
+    videos: {
+      kop: "In gesprek met de winnaars",
+      tekst: "Zes gesprekken uit de Week van de Performance 2023, opgenomen in de studio van Bureau DFO. Elk ongeveer 12 minuten.",
+      knop: "Bekijk de gesprekken",
+      lijst: [
+        { aanbieder: "ING", markt: "Hypotheken", jaar: "2023", duur: "13:25", id: "cCGXL0cPcbQ" },
+        { aanbieder: "Nh1816 Verzekeringen", markt: "Particulier Schade", jaar: "2023", duur: "12:05", id: "t5ezv-Kwbmc" },
+        { aanbieder: "Nationale-Nederlanden", markt: "Zakelijk Schade", jaar: "2023", duur: "11:35", id: "fVqcJMRU1YY" },
+        { aanbieder: "Nationale-Nederlanden", markt: "ORV", jaar: "2023", duur: "11:54", id: "YrCYWVPm_TE", toelichting: "ORV · Performance-onderzoek 2023" },
+        { aanbieder: "TAF", markt: "AOV", jaar: "2023", duur: "12:11", id: "6b-zFjU0fWM" },
+        { aanbieder: "Scildon", markt: "ORV", jaar: "2023", duur: "12:38", id: "lOSQ0Ag_OZ0" }
+      ]
+    },
     // Berichten van aanbieders zelf over hun resultaat. Nieuwste bovenaan.
     // soort: bijvoorbeeld "Nieuwsbericht" of "LinkedIn".
     aanbiedersOver: [

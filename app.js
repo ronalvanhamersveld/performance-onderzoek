@@ -299,6 +299,21 @@
   var pers = d.impact.vakpers || [], eigen = d.impact.aanbiedersOver || [], persHtml = "";
   if (pers.length) persHtml += carrousel("In de vakpers", pers);
   if (eigen.length) persHtml += carrousel("De winnaars delen hun resultaat", eigen, "carousel-gap");
+  var vid = d.impact.videos;
+  if (vid && vid.lijst && vid.lijst.length) {
+    persHtml += '<div class="video-block"><div class="video-head"><div><h3 class="press-title">' + esc(vid.kop) + " <span class=\"press-count\">(" + vid.lijst.length + ")</span></h3>" +
+      '<p class="video-intro">' + esc(vid.tekst) + "</p></div>" +
+      '<button type="button" class="btn btn-small btn-video" aria-expanded="false" aria-controls="video-grid">' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>' + esc(vid.knop || "Bekijk de video's") + "</button></div>" +
+      '<div class="video-grid" id="video-grid" hidden>' + vid.lijst.map(function (v) {
+        var url = "https://www.youtube.com/watch?v=" + encodeURIComponent(v.id);
+        return '<a class="video-card" href="' + url + '" target="_blank" rel="noopener" data-id="' + esc(v.id) + '" aria-label="Video: ' + esc(v.aanbieder) + ", " + esc(v.markt) + '">' +
+          '<span class="video-thumb"><img src="https://i.ytimg.com/vi/' + encodeURIComponent(v.id) + '/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">' +
+          '<span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>' +
+          '<span class="video-dur">' + esc(v.duur) + "</span></span>" +
+          '<span class="video-meta"><strong>' + esc(v.aanbieder) + "</strong><span>" + esc(v.toelichting || (v.markt + " · winnaar " + v.jaar)) + "</span></span></a>";
+      }).join("") + "</div></div>";
+  }
   if (persHtml && $("#vakpers")) {
     setHtml("#vakpers", persHtml);
     $$("#vakpers .carousel").forEach(function (c) {
@@ -318,6 +333,26 @@
       window.addEventListener("resize", bijwerken);
       bijwerken();
     });
+    // Video's: knop klapt de lijst open; een klik speelt de video pas af (geen YouTube-cookies vooraf)
+    var vKnop = $(".btn-video"), vGrid = $("#video-grid");
+    if (vKnop && vGrid) {
+      vKnop.addEventListener("click", function () {
+        var open = vGrid.hidden;
+        vGrid.hidden = !open;
+        vKnop.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      var losseSite = window.self === window.top;
+      $$(".video-card").forEach(function (kaart) {
+        kaart.addEventListener("click", function (e) {
+          if (!losseSite) return; // in een ingesloten weergave gewoon naar YouTube
+          e.preventDefault();
+          var thumb = kaart.querySelector(".video-thumb");
+          thumb.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(kaart.getAttribute("data-id")) +
+            '?autoplay=1&rel=0" title="' + esc(kaart.getAttribute("aria-label")) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+          kaart.classList.add("is-playing");
+        });
+      });
+    }
   }
 
   // FAQ
